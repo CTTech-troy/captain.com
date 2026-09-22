@@ -1,4 +1,4 @@
-# Captain.com Frontend
+# Captain.com
 
 A premium marketing website for Captain.com, built with React, TypeScript, Vite, and Tailwind CSS. The app is structured as a route-based experience with animated product storytelling, reusable UI primitives, service-driven pages, and conversion-focused contact flows.
 
