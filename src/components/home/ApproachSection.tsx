@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CaptainSymbol } from '../brand/CaptainSymbol';
 import { SectionHeading } from '../ui/SectionHeading';
@@ -30,9 +30,40 @@ const LABEL_POSITIONS = [
 
 
 export function ApproachSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [selected, setSelected] = useState(0);
   const [hovered, setHovered] = useState<number | null>(null);
   const principle = principles[selected];
+
+  useEffect(() => {
+    const updateFromScroll = () => {
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+
+      if (!isVisible) return;
+
+      const sectionLength = Math.max(rect.height, 1);
+      const travelStart = window.innerHeight * 0.45;
+      const distance = Math.max(0, travelStart - rect.top);
+      const totalTravel = Math.max(sectionLength + window.innerHeight * 0.25, 1);
+      const progress = Math.min(Math.max(distance / totalTravel, 0), 1);
+      const cycleIndex = Math.round(progress * principles.length);
+      const nextIndex = cycleIndex % principles.length;
+
+      setSelected((current) => (current === nextIndex ? current : nextIndex));
+    };
+
+    updateFromScroll();
+    window.addEventListener('scroll', updateFromScroll, { passive: true });
+    window.addEventListener('resize', updateFromScroll);
+
+    return () => {
+      window.removeEventListener('scroll', updateFromScroll);
+      window.removeEventListener('resize', updateFromScroll);
+    };
+  }, []);
 
   const selector = (i: number, extra?: string) => {
     const p = principles[i];
@@ -62,7 +93,7 @@ export function ApproachSection() {
   };
 
   return (
-    <section aria-labelledby="approach-title" className="bg-white py-28 md:py-36">
+    <section ref={sectionRef} aria-labelledby="approach-title" className="bg-white py-28 md:py-36">
       <div className="container-page grid items-center gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionHeading

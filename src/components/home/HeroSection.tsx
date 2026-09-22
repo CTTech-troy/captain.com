@@ -64,16 +64,16 @@ export function HeroSection() {
             {brand.heroCopy}
           </motion.p>
 
-          <motion.div {...reveal(0.54)} className="mt-9 flex flex-wrap items-center gap-3">
-            <ButtonLink to="/contact">Start a project</ButtonLink>
-            <ButtonLink to="/#capabilities" variant="secondary">
+          <motion.div {...reveal(0.54)} className="mt-9 flex flex-row items-center gap-2 overflow-x-auto pb-1 sm:gap-3 [scrollbar-width:none]">
+            <ButtonLink className="shrink-0" to="/contact">Start a project</ButtonLink>
+            <ButtonLink className="shrink-0" to="/#capabilities" variant="secondary">
               Explore our services
             </ButtonLink>
             <button
               type="button"
               aria-disabled="true"
               aria-describedby="intro-film-note"
-              className="group ml-1 inline-flex items-center gap-3 rounded-full py-1 pr-2 text-left">
+              className="group shrink-0 inline-flex items-center gap-3 rounded-full py-1 pr-2 text-left">
               
               <span className="flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white transition-colors duration-200 group-hover:border-forest-800">
                 <PlayIcon className="ml-0.5 h-4 w-4 fill-forest-800 text-forest-800" aria-hidden="true" />

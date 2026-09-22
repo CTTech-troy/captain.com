@@ -7,9 +7,9 @@ import { heroChips } from '../../data/scenes';
 import { EASE_OUT } from '../../utils/motion';
 import { cn } from '../../utils/cn';
 
-const LAPTOP_SCREEN_IMAGE = "/image.png";
+const LAPTOP_SCREEN_IMAGE = '/hero.png';
 
-/**
+/** 
  * Chip placement, matched by index to heroChips. Chips sit around the devices
  * (never over their screens); connector lines share the 100×80 SVG space.
  */
@@ -73,7 +73,7 @@ export function HeroVisual({ ready, ringRotate }: HeroVisualProps) {
               alt="The Captain.com website shown on a laptop"
               loading="eager"
               decoding="async"
-              className="absolute right-0 top-0 h-full w-auto max-w-none" />
+              className="absolute inset-0 h-full w-full object-cover" />
             
           </div>
         </div>

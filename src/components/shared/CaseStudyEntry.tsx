@@ -29,7 +29,6 @@ export function CaseStudyEntry({ study, index, headingLevel = 'h3' }: CaseStudyE
   const rows: [string, string][] = [
   ['Client', study.client],
   ['Industry', study.industry],
-  ['Challenge', study.challenge],
   ['Solution', study.solution],
   ['Security', study.security],
   ['Results', study.results]];
@@ -47,7 +46,7 @@ export function CaseStudyEntry({ study, index, headingLevel = 'h3' }: CaseStudyE
               decoding="async"
               width={1200}
               height={800}
-              className="h-full w-full object-cover transition-transform duration-300 ease-out-strong hover:scale-[1.03]" />
+              className="h-full w-full object-contain bg-white transition-transform duration-300 ease-out-strong hover:scale-[1.03]" />
             
           </motion.div>
           {study.isPlaceholder &&
@@ -95,28 +94,7 @@ export function CaseStudyEntry({ study, index, headingLevel = 'h3' }: CaseStudyE
           {study.isPlaceholder && <span className="sr-only"> (placeholder case study)</span>}
         </Heading>
         <dl className="mt-8 divide-y divide-line border-y border-line">
-          {rows.slice(0, 4).map(([term, value]) =>
-          <Row key={term} term={term} value={value} muted={study.isPlaceholder} />
-          )}
-          <div className="grid grid-cols-[96px_1fr] gap-4 py-3.5 sm:grid-cols-[110px_1fr]">
-            <dt className="label-mono pt-1 text-muted">Technology</dt>
-            <dd>
-              <motion.ul
-                className="flex flex-wrap gap-1.5"
-                variants={staggerContainer(0.06)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.8 }}>
-                
-                {study.technology.map((tech) =>
-                <motion.li key={tech} variants={popIn} className="rounded-full bg-forest-50 px-2.5 py-1 text-[12px] font-medium text-forest-800">
-                    {tech}
-                  </motion.li>
-                )}
-              </motion.ul>
-            </dd>
-          </div>
-          {rows.slice(4).map(([term, value]) =>
+          {rows.map(([term, value]) =>
           <Row key={term} term={term} value={value} muted={study.isPlaceholder} />
           )}
         </dl>

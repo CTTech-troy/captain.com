@@ -94,12 +94,12 @@ export function ProductsSection() {
                   </span>
                   <span className="label-mono flex items-center gap-2 text-muted">
                     <span className="h-1.5 w-1.5 rounded-full bg-lemon-600" aria-hidden="true" />
-                    In development
+                    Development
                   </span>
                 </div>
                 <h3 className="relative mt-10 font-display text-[24px] font-semibold leading-tight tracking-[-0.02em] text-ink">{product.title}</h3>
                 <p className="relative mt-3 text-[15px] leading-relaxed text-muted">{product.body}</p>
-                <p className="label-mono relative mt-auto pt-8 text-forest-700">To be announced</p>
+                <p className="label-mono relative mt-auto pt-8 text-forest-700">Built by Captain</p>
               </li>
             )}
           </ul>

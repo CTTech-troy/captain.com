@@ -42,8 +42,8 @@ export function BusinessOSScene() {
   const current = businessPhases[phase];
 
   return (
-    <section ref={ref} id="business-systems" aria-labelledby="bos-title" className={cn('relative bg-mist', !reduce && 'h-[340vh]')}>
-      <div className={cn('flex flex-col justify-center overflow-hidden', reduce ? 'py-24' : 'sticky top-0 h-[100svh] pt-16')}>
+    <section ref={ref} id="business-systems" aria-labelledby="bos-title" className={cn('relative bg-mist', !reduce && 'lg:h-[340vh]')}>
+      <div className={cn('flex flex-col justify-center overflow-hidden', reduce ? 'py-24' : 'lg:sticky lg:top-0 lg:h-[100svh] pt-10 lg:pt-16')}>
         <div className="container-page">
           <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
             <SectionHeading
@@ -78,7 +78,7 @@ export function BusinessOSScene() {
             className="relative mx-auto mt-6 w-full md:mt-8"
             style={{
               aspectRatio: `${layout.w} / ${layout.h}`,
-              maxWidth: isDesktop ? 'min(1080px, calc((100svh - 330px) * 1.785))' : 'min(100%, calc((100svh - 300px) * 0.77))'
+              maxWidth: isDesktop ? 'min(1080px, calc((100svh - 330px) * 1.785))' : 'min(100%, 620px)'
             }}>
             
             <svg viewBox={`0 0 ${layout.w} ${layout.h}`} className="absolute inset-0 h-full w-full" aria-hidden="true">
