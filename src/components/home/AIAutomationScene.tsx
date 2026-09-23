@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion, useTransform } from 'framer-motion';
 import { CheckIcon } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { ServiceIcon } from '../ui/ServiceIcon';
 import { aiIntegrations, aiStages } from '../../data/scenes';
-import { useSceneProgress } from '../../hooks/useSceneProgress';
+import { useResponsiveScene } from '../../hooks/useResponsiveScene';
 import { useStep } from '../../hooks/useStep';
 import { cn } from '../../utils/cn';
 
@@ -12,8 +12,7 @@ type StageState = 'pending' | 'active' | 'done';
 
 /** Scroll drives one document through the AI pipeline. Green = processing, lemon = completed. */
 export function AIAutomationScene() {
-  const ref = useRef<HTMLElement>(null);
-  const { progress, reduce } = useSceneProgress(ref);
+  const { sectionRef, contentRef, animationRef, progress, pinned } = useResponsiveScene();
   const count = aiStages.length;
   const step = useStep(progress, count, 0.05, 0.8);
   const linked = useStep(progress, aiIntegrations.length, 0.6, 0.94);
@@ -22,13 +21,13 @@ export function AIAutomationScene() {
 
   return (
     <section
-      ref={ref}
+      ref={sectionRef}
       id="ai-automation"
       aria-labelledby="ai-title"
-      className={cn('relative bg-soft', !reduce && 'h-[300svh]')}>
+      className={cn('relative bg-soft', pinned ? 'h-[300svh]' : 'py-16 md:py-24')}>
       
-      <div className={cn(reduce ? 'py-24' : 'scene-panel')}>
-        <div className="container-page">
+      <div className={cn(pinned && 'sticky top-[var(--header-height)] py-6')}>
+        <div ref={contentRef} className="container-page">
           <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
             <SectionHeading
               className="lg:col-span-7"
@@ -53,7 +52,7 @@ export function AIAutomationScene() {
             </div>
           </div>
 
-          <div className="relative mt-10 md:mt-16">
+          <div ref={animationRef} className="relative mt-10 md:mt-16">
             {/* Horizontal track (tablet and up) */}
             <div
               className="absolute top-[28px] hidden md:block"

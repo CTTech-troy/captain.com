@@ -107,20 +107,6 @@
     padding-left: max(1.25rem, env(safe-area-inset-left));
     padding-right: max(1.25rem, env(safe-area-inset-right));
   }
-  /* Auto margins center short scenes; tall scenes start at the top and remain scrollable. */
-  .scene-panel {
-    position: sticky;
-    top: var(--header-height);
-    height: calc(100svh - var(--header-height));
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    padding-block: 1.5rem max(1.5rem, env(safe-area-inset-bottom));
-  }
-  .scene-panel > .container-page {
-    flex-shrink: 0;
-    margin-block: auto;
-  }
   .label-mono {
     @apply font-mono text-[11px] font-medium uppercase tracking-[0.14em];
   }
@@ -168,10 +154,6 @@
     padding-left: max(3rem, env(safe-area-inset-left));
     padding-right: max(3rem, env(safe-area-inset-right));
   }
-}
-@media (max-height: 600px) {
-  .scene-panel { padding-block: 1rem; }
-  .scene-panel .display-heading { font-size: clamp(1.75rem, 4vw, 2.5rem); }
 }
 /* Icons that draw themselves when their card enters the viewport */
 .draw-icon svg :is(path, circle, rect, line, polyline, polygon, ellipse) {

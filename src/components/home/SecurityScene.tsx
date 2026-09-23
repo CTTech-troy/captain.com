@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence, motion, MotionValue, useMotionValueEvent, useTransform } from 'framer-motion';
 import { ActivityIcon, CheckIcon, ScanSearchIcon, ShieldCheckIcon, ShieldOffIcon } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { ServiceIcon } from '../ui/ServiceIcon';
 import { securityLayers, securityStates } from '../../data/scenes';
-import { useSceneProgress } from '../../hooks/useSceneProgress';
+import { useResponsiveScene } from '../../hooks/useResponsiveScene';
 import { EASE_OUT } from '../../utils/motion';
 import { cn } from '../../utils/cn';
 
@@ -18,8 +18,7 @@ const RINGS = [
 
 
 export function SecurityScene() {
-  const ref = useRef<HTMLElement>(null);
-  const { progress, reduce } = useSceneProgress(ref);
+  const { sectionRef, contentRef, animationRef, progress, pinned } = useResponsiveScene();
   const [tick, setTick] = useState(() => Math.round(progress.get() * 100));
 
   useMotionValueEvent(progress, 'change', (value) => {
@@ -45,9 +44,9 @@ export function SecurityScene() {
   });
 
   return (
-    <section ref={ref} id="security" aria-labelledby="security-title" className={cn('relative bg-white', !reduce && 'h-[320svh]')}>
-      <div className={cn(reduce ? 'py-24' : 'scene-panel')}>
-        <div className="container-page grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+    <section ref={sectionRef} id="security" aria-labelledby="security-title" className={cn('relative bg-white', pinned ? 'h-[320svh]' : 'py-16 md:py-24')}>
+      <div className={cn(pinned && 'sticky top-[var(--header-height)] py-6')}>
+        <div ref={contentRef} className="container-page grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <SectionHeading
               id="security-title"
@@ -108,7 +107,7 @@ export function SecurityScene() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="relative mx-auto max-w-[620px] p-[30px] sm:p-[46px] md:p-[58px]">
+            <div ref={animationRef} className="relative mx-auto max-w-[620px] p-[30px] sm:p-[46px] md:p-[58px]">
               {RINGS.map((ring, k) =>
               <SecurityRing key={ring.label} index={k} label={ring.label} className={ring.className} progress={progress} />
               )}

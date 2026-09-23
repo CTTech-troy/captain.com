@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo } from 'react';
 import { AnimatePresence, motion, useTransform } from 'framer-motion';
 import { CaptainSymbol } from '../brand/CaptainSymbol';
 import { SectionHeading } from '../ui/SectionHeading';
 import { ServiceIcon } from '../ui/ServiceIcon';
 import { businessModules, businessPhases } from '../../data/scenes';
-import { useSceneProgress } from '../../hooks/useSceneProgress';
+import { useResponsiveScene } from '../../hooks/useResponsiveScene';
 import { useStep } from '../../hooks/useStep';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { EASE_OUT } from '../../utils/motion';
@@ -25,11 +25,7 @@ const SCATTER: [number, number][] = [
 
 /** Nine business systems connect, one by one, to a central Captain platform. */
 export function BusinessOSScene() {
-  const ref = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [fitsViewport, setFitsViewport] = useState(false);
-  const { progress, reduce } = useSceneProgress(ref, fitsViewport ? ['start start', 'end end'] : ['start end', 'end end']);
-  const pinned = fitsViewport && !reduce;
+  const { sectionRef, contentRef, animationRef, progress, reduce, pinned } = useResponsiveScene();
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const layout = isDesktop ? DESKTOP : MOBILE;
   const total = businessModules.length;
@@ -51,24 +47,8 @@ export function BusinessOSScene() {
 
   const current = businessPhases[phase];
 
-  useEffect(() => {
-    const content = contentRef.current;
-    if (!content) return;
-    const measure = () => {
-      const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 64;
-      setFitsViewport(content.getBoundingClientRect().height + headerHeight + 48 <= window.innerHeight);
-    };
-    const observer = new ResizeObserver(measure);
-    observer.observe(content);
-    window.addEventListener('resize', measure);
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('resize', measure);
-    };
-  }, []);
-
   return (
-    <section ref={ref} id="business-systems" aria-labelledby="bos-title" className={cn('relative bg-mist', pinned ? 'h-[340svh]' : 'py-16 md:py-24')}>
+    <section ref={sectionRef} id="business-systems" aria-labelledby="bos-title" className={cn('relative bg-mist', pinned ? 'h-[340svh]' : 'py-16 md:py-24')}>
       {/* Only pin content that fits. Short screens use document scrolling for the full diagram. */}
       <div className={cn(pinned && 'sticky top-[var(--header-height)] py-6')}>
         <div ref={contentRef} className="container-page">
@@ -102,6 +82,7 @@ export function BusinessOSScene() {
           </div>
 
           <div
+            ref={animationRef}
             data-business-diagram
             className="relative mx-auto mt-6 w-full lg:mt-8"
             style={{
