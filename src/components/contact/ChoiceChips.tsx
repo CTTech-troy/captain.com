@@ -20,8 +20,8 @@ export function ChoiceChips({ id, legend, name, options, value, onChange, multip
   const describedBy = [error ? `${id}-error` : null, hint ? `${id}-hint` : null].filter(Boolean).join(' ') || undefined;
 
   return (
-    <fieldset id={id} tabIndex={-1} aria-describedby={describedBy} aria-invalid={Boolean(error)} className="focus:outline-none">
-      <legend className="flex w-full items-baseline justify-between gap-3 text-[14px] font-medium text-ink">
+    <fieldset id={id} tabIndex={-1} aria-describedby={describedBy} aria-invalid={Boolean(error)} className="min-w-0 focus:outline-none">
+      <legend className="flex w-full flex-wrap items-baseline justify-between gap-x-3 gap-y-1 text-[14px] font-medium text-ink">
         {legend}
         <span className={cn('text-[12px] font-normal', required ? 'text-forest-700' : 'text-muted')}>
           {required ? 'Required' : multiple ? 'Select all that apply' : 'Optional'}
@@ -36,7 +36,7 @@ export function ChoiceChips({ id, legend, name, options, value, onChange, multip
         {options.map((option) => {
           const checked = isChecked(option);
           return (
-            <label key={option} className="relative">
+            <label key={option} className="relative max-w-full">
               <input
                 type={multiple ? 'checkbox' : 'radio'}
                 name={name}
@@ -47,7 +47,7 @@ export function ChoiceChips({ id, legend, name, options, value, onChange, multip
               
               <span
                 className={cn(
-                  'flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-2 text-[14px] transition-colors duration-150',
+                  'flex min-h-11 items-center gap-1.5 rounded-full border px-3.5 py-2 text-[14px] transition-colors duration-150',
                   'peer-focus-visible:ring-2 peer-focus-visible:ring-forest-500 peer-focus-visible:ring-offset-2',
                   checked ? 'border-forest-800 bg-forest-800 text-white' : 'border-line bg-white text-ink/80 hover:border-forest-600 hover:text-ink'
                 )}>

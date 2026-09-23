@@ -85,7 +85,7 @@ export function ProductsSection() {
             {productCategories.map((product) =>
             <li
               key={product.id}
-              className="relative flex min-h-[340px] w-[290px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-dashed border-forest-200 bg-soft p-7 md:w-[360px]">
+              className="relative flex min-h-[340px] w-[min(290px,calc(100vw-2.5rem))] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-dashed border-forest-200 bg-soft p-5 sm:p-7 md:w-[360px]">
               
                 <CaptainSymbol size={200} strokeWidth={3} showAccent={false} className="pointer-events-none absolute -bottom-16 -right-16 text-forest-100" />
                 <div className="relative flex items-center justify-between">

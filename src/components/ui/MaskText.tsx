@@ -33,7 +33,7 @@ export function MaskText({ text, as = 'h2', className, highlight = [], delay = 0
         
         {words.map((word, i) =>
         <Fragment key={`${word}-${i}`}>
-            <span className="-mb-[0.1em] inline-block overflow-hidden pb-[0.1em] align-bottom">
+            <span className="-mb-[0.1em] inline-block max-w-full overflow-hidden pb-[0.1em] align-bottom">
               <motion.span
               variants={maskUp}
               className={cn('inline-block', highlighted.includes(normalize(word)) && 'text-forest-700')}>

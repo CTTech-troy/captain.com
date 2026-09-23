@@ -1,13 +1,12 @@
-import { KeyboardEvent, useRef, useState } from 'react';
+import { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValueEvent } from 'framer-motion';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { ServiceIcon } from '../ui/ServiceIcon';
 import { industries } from '../../data/industries';
 import { serviceTitle } from '../../utils/content';
 import { useSceneProgress } from '../../hooks/useSceneProgress';
-import { useStep } from '../../hooks/useStep';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { EASE_OUT, fadeUp, staggerContainer } from '../../utils/motion';
 import { cn } from '../../utils/cn';
@@ -18,33 +17,61 @@ const total = industries.length;
 /**
  * Scroll-driven industry selector: the section pins and scrolling steps
  * through the industries one after the other. Tabs jump the scroll to an
- * industry. Falls back to tap-to-select on mobile and for reduced motion.
+ * industry. Uses animated tabs when the content cannot fit without nested scrolling.
  */
 export function IndustriesSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const { progress, reduce } = useSceneProgress(sectionRef);
   const isDesktop = useMediaQuery('(min-width: 1024px)');
-  const pinned = isDesktop && !reduce;
+  const [fitsViewport, setFitsViewport] = useState(false);
+  const pinned = isDesktop && fitsViewport && !reduce;
 
-  const scrollStep = useStep(progress, total, 0.01, 0.99);
-  const scrollIndex = Math.min(scrollStep, total - 1);
-  const [manualIndex, setManualIndex] = useState(0);
-  const activeIndex = pinned ? scrollIndex : manualIndex;
+  const [activeIndex, setActiveIndex] = useState(0);
+  useMotionValueEvent(progress, 'change', (value) => {
+    if (!pinned) return;
+    setActiveIndex(Math.max(0, Math.min(total - 1, Math.floor((value - 0.01) / 0.98 * total))));
+  });
   const active = industries[activeIndex];
 
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
+  useEffect(() => {
+    const content = contentRef.current;
+    if (!content) return;
+    let measuredWidth = 0;
+    let tallestContent = 0;
+    const measure = () => {
+      const { width, height } = content.getBoundingClientRect();
+      // Retain the tallest tab at this width so a shorter tab cannot re-pin the section.
+      if (width !== measuredWidth) {
+        measuredWidth = width;
+        tallestContent = 0;
+      }
+      tallestContent = Math.max(tallestContent, height);
+      const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
+      setFitsViewport(tallestContent + headerHeight + 48 <= window.innerHeight);
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(content);
+    window.addEventListener('resize', measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, []);
+
   /** In pinned mode, selecting a tab scrolls the page to that industry's segment. */
   const goTo = (index: number) => {
+    setActiveIndex(index);
     if (!pinned) {
-      setManualIndex(index);
       return;
     }
     const section = sectionRef.current;
     if (!section) return;
     const top = window.scrollY + section.getBoundingClientRect().top;
     const scrollable = section.offsetHeight - window.innerHeight;
-    window.scrollTo({ top: top + (index + 0.5) / total * scrollable, behavior: 'smooth' });
+    window.scrollTo({ top: top + (0.01 + (index + 0.5) / total * 0.98) * scrollable, behavior: 'instant' });
   };
 
   const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
@@ -56,7 +83,11 @@ export function IndustriesSection() {
     if (next === null) return;
     event.preventDefault();
     goTo(next);
-    tabRefs.current[next]?.focus();
+    tabRefs.current[next]?.focus({ preventScroll: true });
+    const tab = tabRefs.current[next];
+    if (!isDesktop && tab?.parentElement) {
+      tab.parentElement.scrollTo({ left: tab.offsetLeft - tab.parentElement.offsetLeft, behavior: reduce ? 'instant' : 'smooth' });
+    }
   };
 
   return (
@@ -64,10 +95,10 @@ export function IndustriesSection() {
       ref={sectionRef}
       id="industries"
       aria-labelledby="industries-title"
-      className={cn('scroll-mt-20 bg-white', pinned ? 'h-[520vh]' : 'py-28 md:py-36')}>
+      className={cn('scroll-mt-20 bg-white', pinned ? 'h-[520svh]' : 'py-28 md:py-36')}>
       
-      <div className={cn(pinned && 'sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden pt-16')}>
-        <div className="container-page">
+      <div className={cn(pinned && 'sticky top-[var(--header-height)] py-6')}>
+        <div ref={contentRef} className="container-page">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
             <SectionHeading
               className="lg:col-span-7"
@@ -75,12 +106,11 @@ export function IndustriesSection() {
               label="Industries"
               title="Technology for real businesses."
               highlight={['real']}
-              support={pinned ? undefined : 'Select an industry to see the systems, requirements and automation opportunities we typically work with.'} />
+              />
             
-            {pinned &&
             <div className="lg:col-span-5 lg:justify-self-end lg:pb-1">
                 <p className="label-mono text-muted">
-                  Keep scrolling — <span className="text-forest-700">{String(activeIndex + 1).padStart(2, '0')}</span> / {String(total).padStart(2, '0')}
+                  {pinned ? 'Keep scrolling' : 'Select an industry'} — <span className="text-forest-700">{String(activeIndex + 1).padStart(2, '0')}</span> / {String(total).padStart(2, '0')}
                 </p>
                 <div className="mt-2 flex gap-1" aria-hidden="true">
                   {industries.map((industry, i) =>
@@ -96,14 +126,13 @@ export function IndustriesSection() {
                 )}
                 </div>
               </div>
-            }
           </div>
 
-          <div className={cn('grid gap-6 lg:grid-cols-12 lg:gap-10', pinned ? 'mt-10' : 'mt-14')}>
+          <div className="mt-10 grid gap-6 lg:grid-cols-12 lg:gap-10">
             <div
               role="tablist"
               aria-label="Industries"
-              aria-orientation="vertical"
+              aria-orientation={isDesktop ? 'vertical' : 'horizontal'}
               className={cn(
                 'no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 sm:-mx-8 sm:px-8 lg:col-span-4 lg:mx-0 lg:flex-col lg:gap-0 lg:overflow-visible lg:border-t lg:border-line lg:px-0'
               )}>
@@ -124,9 +153,9 @@ export function IndustriesSection() {
                     onClick={() => goTo(i)}
                     onKeyDown={(e) => onKeyDown(e, i)}
                     className={cn(
-                      'group relative flex shrink-0 items-center gap-3 whitespace-nowrap rounded-full border px-4 py-2 text-[14px] font-medium transition-colors duration-200',
+                      'group relative flex min-h-11 shrink-0 items-center gap-3 whitespace-nowrap rounded-full border px-4 py-2 text-[14px] font-medium transition-colors duration-200',
                       'lg:rounded-none lg:border-0 lg:border-b lg:border-line lg:px-0 lg:text-left',
-                      pinned ? 'lg:py-2.5' : 'lg:py-4',
+                      'lg:py-2.5',
                       selected ? 'border-forest-800 bg-forest-800 text-white lg:bg-transparent lg:text-ink' : 'border-line text-ink/70 hover:text-ink'
                     )}>
                     
@@ -158,10 +187,10 @@ export function IndustriesSection() {
               role="tabpanel"
               aria-labelledby={`industry-tab-${active.id}`}
               aria-live="polite"
-              className={cn('rounded-3xl bg-soft lg:col-span-8 lg:self-start', pinned ? 'p-6 md:p-10' : 'min-h-[560px] p-6 md:p-10')}>
+              className="rounded-3xl bg-soft p-6 md:p-10 lg:col-span-8 lg:self-start">
               
               <AnimatePresence mode="wait" initial={false}>
-                <IndustryPanel key={active.id} industry={active} compact={pinned} />
+                <IndustryPanel key={active.id} industry={active} compact />
               </AnimatePresence>
             </div>
           </div>

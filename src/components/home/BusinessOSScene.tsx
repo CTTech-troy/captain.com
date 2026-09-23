@@ -10,8 +10,14 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { EASE_OUT } from '../../utils/motion';
 import { cn } from '../../utils/cn';
 
-const DESKTOP = { w: 1000, h: 560, rx: 400, ry: 215 };
-const MOBILE = { w: 600, h: 780, rx: 215, ry: 305 };
+const DESKTOP = { w: 1200, h: 680, rx: 440, ry: 255 };
+const MOBILE = { w: 600, h: 900, rx: 210, ry: 340 };
+// Stagger the compact orbit so full labels have their own space, even at 320px.
+const MOBILE_POSITIONS = [
+  { x: 300, y: 90 }, { x: 500, y: 210 }, { x: 500, y: 420 },
+  { x: 500, y: 650 }, { x: 400, y: 810 }, { x: 180, y: 810 },
+  { x: 100, y: 650 }, { x: 100, y: 420 }, { x: 100, y: 210 }
+];
 /** Where each disconnected tool drifts before it is connected (px). */
 const SCATTER: [number, number][] = [
 [-36, -16], [30, -24], [42, 10], [18, 32], [-24, 36], [-40, 14], [-28, -28], [34, -12], [10, 28]];
@@ -21,7 +27,7 @@ const SCATTER: [number, number][] = [
 export function BusinessOSScene() {
   const ref = useRef<HTMLElement>(null);
   const { progress, reduce } = useSceneProgress(ref);
-  const isDesktop = useMediaQuery('(min-width: 768px)');
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
   const layout = isDesktop ? DESKTOP : MOBILE;
   const total = businessModules.length;
   const connected = useStep(progress, total, 0.12, 0.78);
@@ -33,17 +39,18 @@ export function BusinessOSScene() {
   const positions = useMemo(
     () =>
     businessModules.map((_, i) => {
+      if (!isDesktop) return MOBILE_POSITIONS[i];
       const angle = (-90 + i * (360 / total)) * Math.PI / 180;
       return { x: cx + layout.rx * Math.cos(angle), y: cy + layout.ry * Math.sin(angle) };
     }),
-    [cx, cy, layout.rx, layout.ry, total]
+    [cx, cy, layout.rx, layout.ry, total, isDesktop]
   );
 
   const current = businessPhases[phase];
 
   return (
-    <section ref={ref} id="business-systems" aria-labelledby="bos-title" className={cn('relative bg-mist', !reduce && 'lg:h-[340vh]')}>
-      <div className={cn('flex flex-col justify-center overflow-hidden', reduce ? 'py-24' : 'lg:sticky lg:top-0 lg:h-[100svh] pt-10 lg:pt-16')}>
+    <section ref={ref} id="business-systems" aria-labelledby="bos-title" className={cn('relative bg-mist', !reduce && 'h-[340svh]')}>
+      <div className={cn(reduce ? 'py-24' : 'scene-panel')}>
         <div className="container-page">
           <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
             <SectionHeading
@@ -75,10 +82,11 @@ export function BusinessOSScene() {
           </div>
 
           <div
-            className="relative mx-auto mt-6 w-full md:mt-8"
+            data-business-diagram
+            className="relative mx-auto mt-6 w-full lg:mt-8"
             style={{
               aspectRatio: `${layout.w} / ${layout.h}`,
-              maxWidth: isDesktop ? 'min(1080px, calc((100svh - 330px) * 1.785))' : 'min(100%, 620px)'
+              maxWidth: isDesktop ? '1080px' : '480px'
             }}>
             
             <svg viewBox={`0 0 ${layout.w} ${layout.h}`} className="absolute inset-0 h-full w-full" aria-hidden="true">
@@ -123,16 +131,18 @@ export function BusinessOSScene() {
               })}
             </svg>
 
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <motion.div style={{ scale: hubScale }} className="flex flex-col items-center">
-                <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-forest-800 text-white shadow-[0_24px_60px_-20px_rgba(14,74,50,0.55)] md:h-32 md:w-32">
+            <div data-business-hub className="absolute left-1/2 top-1/2 w-[28%] -translate-x-1/2 -translate-y-1/2 lg:w-[22%]">
+              <motion.div style={{ scale: hubScale }} className="relative flex flex-col items-center text-center">
+                <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-forest-800 text-white shadow-[0_24px_60px_-20px_rgba(14,74,50,0.55)] sm:h-20 sm:w-20 lg:h-28 lg:w-28">
                   <CaptainSymbol size={isDesktop ? 50 : 34} className="text-white" />
-                  <span className="absolute -inset-2 rounded-full border border-forest-800/20 md:-inset-3" />
+                  <span className="absolute -inset-1.5 rounded-full border border-forest-800/20 lg:-inset-3" />
                 </div>
-                <p className="mt-3 font-display text-[15px] font-semibold tracking-[-0.01em] text-ink md:text-lg">Captain Platform</p>
-                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted md:text-[11px]">
-                  {connected}/{total} connected
-                </p>
+                <div className="absolute inset-x-0 top-full mt-3">
+                  <p className="rounded bg-mist px-1 font-display text-[13px] font-semibold leading-tight tracking-[-0.01em] text-ink sm:text-base lg:text-lg">Captain Platform</p>
+                  <p className="mt-1 rounded bg-mist px-1 font-mono text-[9px] uppercase tracking-[0.04em] text-muted sm:text-[10px] lg:text-[11px]">
+                    {connected}/{total} connected
+                  </p>
+                </div>
               </motion.div>
             </div>
 
@@ -142,22 +152,23 @@ export function BusinessOSScene() {
               return (
                 <div
                   key={module.id}
-                  className="absolute -translate-x-1/2 -translate-y-1/2"
+                  data-business-node={module.id}
+                  className="absolute w-[28%] -translate-x-1/2 -translate-y-1/2 lg:w-[18%]"
                   style={{ left: `${positions[i].x / layout.w * 100}%`, top: `${positions[i].y / layout.h * 100}%` }}>
                   
                   <motion.div
                     initial={false}
-                    animate={on ? { x: 0, y: 0, opacity: 1 } : { x: sx, y: sy, opacity: 0.8 }}
+                    animate={on ? { x: 0, y: 0, opacity: 1 } : { x: sx * (isDesktop ? 0.5 : 0.1), y: sy * (isDesktop ? 0.5 : 0.1), opacity: 0.8 }}
                     transition={{ duration: 0.3, ease: EASE_OUT }}
                     className={cn(
-                      'flex flex-col items-center gap-1.5 md:flex-row md:gap-2 md:rounded-full md:border md:bg-white md:py-1.5 md:pl-1.5 md:pr-4',
-                      on ? 'md:border-forest-600 md:shadow-[0_10px_30px_-16px_rgba(14,74,50,0.45)]' : 'md:border-dashed md:border-faint/60'
+                      'flex w-full flex-col items-center gap-1.5 rounded-xl border bg-mist px-1 py-2 lg:flex-row lg:gap-2 lg:rounded-full lg:bg-white lg:py-1.5 lg:pl-1.5 lg:pr-3',
+                      on ? 'border-forest-600 shadow-[0_10px_30px_-16px_rgba(14,74,50,0.45)]' : 'border-dashed border-faint/60'
                     )}>
                     
                     <span
                       className={cn(
-                        'relative flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 md:h-8 md:w-8',
-                        on ? 'bg-forest-800 text-white' : 'border border-dashed border-faint/60 bg-white text-faint md:border-0 md:bg-mist'
+                        'relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-200',
+                        on ? 'bg-forest-800 text-white' : 'border border-dashed border-faint/60 bg-white text-faint lg:border-0 lg:bg-mist'
                       )}>
                       
                       <ServiceIcon name={module.icon} className="h-4 w-4" strokeWidth={2} />
@@ -165,7 +176,7 @@ export function BusinessOSScene() {
                     </span>
                     <span
                       className={cn(
-                        'whitespace-nowrap font-mono text-[10px] font-medium uppercase tracking-[0.12em] md:text-[11px]',
+                        'min-w-0 max-w-full break-words text-center font-mono text-[10px] font-medium uppercase leading-snug tracking-[0.02em] sm:text-[11px] lg:text-left',
                         on ? 'text-ink' : 'text-muted'
                       )}>
                       

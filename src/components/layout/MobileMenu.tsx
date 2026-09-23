@@ -9,10 +9,11 @@ import type { NavLink } from '../../types/content';
 
 interface MobileMenuProps {
   open: boolean;
+  onClose: () => void;
   isActive: (link: NavLink) => boolean;
 }
 
-export function MobileMenu({ open, isActive }: MobileMenuProps) {
+export function MobileMenu({ open, isActive, onClose }: MobileMenuProps) {
   useEffect(() => {
     if (!open) return;
     const previous = document.body.style.overflow;
@@ -27,7 +28,10 @@ export function MobileMenu({ open, isActive }: MobileMenuProps) {
       {open &&
       <motion.div
         id="mobile-menu"
-        className="fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col overflow-y-auto bg-white px-5 pb-8 pt-6 sm:px-8 lg:hidden"
+        className="mobile-menu fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col overflow-y-auto bg-white px-5 pb-8 pt-6 sm:px-8 md:top-[72px] lg:hidden"
+        onClick={(event) => {
+          if ((event.target as HTMLElement).closest('a')) onClose();
+        }}
         initial={{ clipPath: 'inset(0% 0% 100% 0%)' }}
         animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
         exit={{ clipPath: 'inset(0% 0% 100% 0%)' }}

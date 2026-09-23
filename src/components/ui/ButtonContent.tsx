@@ -22,7 +22,7 @@ export function ButtonContent({ variant, size, children, icon }: ButtonContentPr
           buttonFillClasses(variant)
         )} />
       
-      <span className="relative">{children}</span>
+      <span className="relative min-w-0 py-2">{children}</span>
       <span aria-hidden="true" className={buttonArrowClasses(variant, size)}>
         {icon ??
         <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 ease-out-strong group-hover:translate-x-0.5" />

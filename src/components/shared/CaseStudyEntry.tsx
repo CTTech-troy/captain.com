@@ -35,7 +35,7 @@ export function CaseStudyEntry({ study, index, headingLevel = 'h3' }: CaseStudyE
 
 
   return (
-    <article ref={ref} aria-labelledby={`${study.id}-title`} className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
+    <article ref={ref} aria-labelledby={`${study.id}-title`} className="grid items-start gap-10 overflow-x-clip lg:grid-cols-12 lg:gap-14">
       <div className={cn('lg:col-span-7', reversed && 'lg:order-2')}>
         <motion.div style={{ clipPath }} className="relative overflow-hidden rounded-[20px] bg-mist" data-cursor="view">
           <motion.div style={{ scale: imageScale }} className="aspect-[3/2] w-full">

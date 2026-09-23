@@ -25,9 +25,9 @@ export function AIAutomationScene() {
       ref={ref}
       id="ai-automation"
       aria-labelledby="ai-title"
-      className={cn('relative bg-soft', !reduce && 'h-[300vh]')}>
+      className={cn('relative bg-soft', !reduce && 'h-[300svh]')}>
       
-      <div className={cn('flex flex-col justify-center overflow-hidden', reduce ? 'py-24' : 'sticky top-0 h-[100svh] pt-16')}>
+      <div className={cn(reduce ? 'py-24' : 'scene-panel')}>
         <div className="container-page">
           <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
             <SectionHeading

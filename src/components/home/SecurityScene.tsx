@@ -45,8 +45,8 @@ export function SecurityScene() {
   });
 
   return (
-    <section ref={ref} id="security" aria-labelledby="security-title" className={cn('relative bg-white', !reduce && 'h-[320vh]')}>
-      <div className={cn('flex flex-col justify-center overflow-hidden', reduce ? 'py-24' : 'sticky top-0 h-[100svh] pt-16')}>
+    <section ref={ref} id="security" aria-labelledby="security-title" className={cn('relative bg-white', !reduce && 'h-[320svh]')}>
+      <div className={cn(reduce ? 'py-24' : 'scene-panel')}>
         <div className="container-page grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <SectionHeading
@@ -118,7 +118,7 @@ export function SecurityScene() {
                 {securityLayers.map((layer, i) =>
                   <li
                     key={layer.id}
-                    className="relative flex items-center justify-between gap-3 rounded-xl border border-line bg-white px-3 py-2.5 md:px-4 md:py-3">
+                    className="relative flex flex-wrap items-center justify-between gap-2 rounded-xl border border-line bg-white px-3 py-2.5 md:gap-3 md:px-4 md:py-3">
                     
                     <div className="flex min-w-0 items-center gap-3">
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-forest-50 text-forest-800">

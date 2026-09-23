@@ -120,7 +120,7 @@ export function ContactForm({ form }: {form: ContactFormController;}) {
 
 function FormSection({ number, title, children }: {number: string;title: string;children: ReactNode;}) {
   return (
-    <section className="rounded-3xl border border-line bg-white p-6 md:p-9" aria-labelledby={`form-section-${number}`}>
+    <section className="min-w-0 rounded-3xl border border-line bg-white p-4 sm:p-6 md:p-9" aria-labelledby={`form-section-${number}`}>
       <h2 id={`form-section-${number}`} className="mb-7 flex items-center gap-3 font-display text-[22px] font-semibold tracking-[-0.02em] text-ink">
         <span className="font-mono text-[12px] font-medium text-forest-700">{number}</span>
         {title}

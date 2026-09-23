@@ -34,14 +34,14 @@ export function TextField({
 }: TextFieldProps) {
   const describedBy = [error ? `${id}-error` : null, hint ? `${id}-hint` : null].filter(Boolean).join(' ') || undefined;
   const fieldClasses = cn(
-    'mt-2 w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-ink placeholder:text-faint',
+    'mt-2 w-full min-w-0 rounded-xl border bg-white px-4 py-3 text-base text-ink placeholder:text-faint',
     'transition-[border-color,box-shadow] duration-200 focus:outline-none focus:ring-4',
     error ? 'border-danger focus:border-danger focus:ring-danger/10' : 'border-line focus:border-forest-700 focus:ring-forest-100'
   );
 
   return (
     <div className={className}>
-      <label htmlFor={id} className="flex items-baseline justify-between gap-3 text-[14px] font-medium text-ink">
+      <label htmlFor={id} className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 text-[14px] font-medium text-ink">
         {label}
         <span className={cn('text-[12px] font-normal', required ? 'text-forest-700' : 'text-muted')}>{required ? 'Required' : 'Optional'}</span>
       </label>

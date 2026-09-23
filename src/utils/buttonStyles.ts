@@ -5,10 +5,10 @@ export type ButtonSize = 'md' | 'sm';
 
 export function buttonClasses(variant: ButtonVariant, size: ButtonSize): string {
   return cn(
-    'group relative inline-flex items-center justify-center gap-3 overflow-hidden whitespace-nowrap rounded-full font-medium',
+    'group relative inline-flex max-w-full items-center justify-center gap-3 overflow-hidden whitespace-normal rounded-full text-left font-medium',
     'transition-[color,background-color,border-color,transform] duration-200 ease-out-strong active:scale-[0.98]',
     'disabled:pointer-events-none disabled:opacity-60',
-    size === 'md' ? 'h-12 pl-6 pr-1.5 text-[15px]' : 'h-10 pl-4 pr-1 text-[14px]',
+    size === 'md' ? 'min-h-12 pl-6 pr-1.5 text-[15px]' : 'min-h-11 pl-4 pr-1 text-[14px]',
     variant === 'primary' && 'bg-forest-800 text-white',
     variant === 'secondary' && 'border border-ink/15 bg-white text-ink hover:border-forest-800 hover:text-white',
     variant === 'lemon' && 'bg-lemon text-ink',

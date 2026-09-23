@@ -64,7 +64,7 @@ export function HeroSection() {
             {brand.heroCopy}
           </motion.p>
 
-          <motion.div {...reveal(0.54)} className="mt-9 flex flex-row items-center gap-2 overflow-x-auto pb-1 sm:gap-3 [scrollbar-width:none]">
+          <motion.div {...reveal(0.54)} className="mt-9 flex flex-wrap items-center gap-2 pb-1 sm:gap-3">
             <ButtonLink className="shrink-0" to="/contact">Start a project</ButtonLink>
             <ButtonLink className="shrink-0" to="/#capabilities" variant="secondary">
               Explore our services
