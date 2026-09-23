@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useTransform } from 'framer-motion';
 import { CaptainSymbol } from '../brand/CaptainSymbol';
 import { SectionHeading } from '../ui/SectionHeading';
@@ -26,7 +26,10 @@ const SCATTER: [number, number][] = [
 /** Nine business systems connect, one by one, to a central Captain platform. */
 export function BusinessOSScene() {
   const ref = useRef<HTMLElement>(null);
-  const { progress, reduce } = useSceneProgress(ref);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [fitsViewport, setFitsViewport] = useState(false);
+  const { progress, reduce } = useSceneProgress(ref, fitsViewport ? ['start start', 'end end'] : ['start end', 'end end']);
+  const pinned = fitsViewport && !reduce;
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const layout = isDesktop ? DESKTOP : MOBILE;
   const total = businessModules.length;
@@ -48,10 +51,27 @@ export function BusinessOSScene() {
 
   const current = businessPhases[phase];
 
+  useEffect(() => {
+    const content = contentRef.current;
+    if (!content) return;
+    const measure = () => {
+      const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 64;
+      setFitsViewport(content.getBoundingClientRect().height + headerHeight + 48 <= window.innerHeight);
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(content);
+    window.addEventListener('resize', measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, []);
+
   return (
-    <section ref={ref} id="business-systems" aria-labelledby="bos-title" className={cn('relative bg-mist', !reduce && 'h-[340svh]')}>
-      <div className={cn(reduce ? 'py-24' : 'scene-panel')}>
-        <div className="container-page">
+    <section ref={ref} id="business-systems" aria-labelledby="bos-title" className={cn('relative bg-mist', pinned ? 'h-[340svh]' : 'py-16 md:py-24')}>
+      {/* Only pin content that fits. Short screens use document scrolling for the full diagram. */}
+      <div className={cn(pinned && 'sticky top-[var(--header-height)] py-6')}>
+        <div ref={contentRef} className="container-page">
           <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
             <SectionHeading
               className="lg:col-span-7"
