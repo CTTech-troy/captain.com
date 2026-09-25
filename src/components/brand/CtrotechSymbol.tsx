@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { EASE_OUT } from '../../utils/motion';
 
-interface CaptainSymbolProps {
+interface CtrotechSymbolProps {
   size?: number | string;
   className?: string;
   /** Draw the ring on mount (used by the loader and transitions). */
@@ -14,10 +14,10 @@ interface CaptainSymbolProps {
 }
 
 /**
- * The Captain.com symbol: a geometric "C" ring with a lemon heading point in
+ * The Ctrotech.com symbol: a geometric "C" ring with a lemon heading point in
  * its opening. The ring uses currentColor so it adapts to any surface.
  */
-export function CaptainSymbol({
+export function CtrotechSymbol({
   size = 32,
   className,
   draw = false,
@@ -25,7 +25,7 @@ export function CaptainSymbol({
   accentClassName = 'fill-lemon',
   showAccent = true,
   title
-}: CaptainSymbolProps) {
+}: CtrotechSymbolProps) {
   return (
     <svg
       viewBox="0 0 48 48"

@@ -48,6 +48,7 @@ export function TextField({
       {multiline ?
       <textarea
         id={id}
+        maxLength={10000}
         value={value}
         rows={rows}
         placeholder={placeholder}
@@ -60,6 +61,7 @@ export function TextField({
 
       <input
         id={id}
+        maxLength={type === 'email' ? 254 : 500}
         type={type}
         value={value}
         placeholder={placeholder}

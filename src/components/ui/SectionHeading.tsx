@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
 import { MaskText } from './MaskText';
 import { fadeUp } from '../../utils/motion';
 import { cn } from '../../utils/cn';
@@ -32,7 +32,7 @@ export function SectionHeading({
   return (
     <div className={className}>
       <p className={cn('label-mono flex items-center gap-2', dark ? 'text-lemon' : 'text-forest-700')}>
-        <CaptainSymbol size={14} className={dark ? 'text-white' : 'text-forest-700'} />
+        <CtrotechSymbol size={14} className={dark ? 'text-white' : 'text-forest-700'} />
         {label}
       </p>
       <MaskText

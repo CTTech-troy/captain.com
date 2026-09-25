@@ -1,0 +1,114 @@
+﻿ M .gitignore
+ M README.md
+ M eslint.config.js
+ M index.html
+ M package-lock.json
+ M package.json
+ M public/hero.png
+ M public/img4.png
+ M src/App.css
+ M src/App.tsx
+ M src/assets/hero.png
+ M src/components/brand/BrandLogo.tsx
+ D src/components/brand/CaptainSymbol.tsx
+ M src/components/contact/ContactForm.tsx
+ M src/components/contact/ContactSuccess.tsx
+ M src/components/contact/TextField.tsx
+ M src/components/home/ApproachSection.tsx
+ M src/components/home/BusinessOSScene.tsx
+ M src/components/home/CapabilitiesSection.tsx
+ M src/components/home/CaseStudiesSection.tsx
+ M src/components/home/EcosystemStrip.tsx
+ M src/components/home/HeroPhoneScreen.tsx
+ M src/components/home/HeroSection.tsx
+ M src/components/home/HeroVisual.tsx
+ M src/components/home/IntroSection.tsx
+ M src/components/home/ManagedSection.tsx
+ M src/components/home/ProductsSection.tsx
+ M src/components/home/SystemDiagram.tsx
+ M src/components/home/TechnologySection.tsx
+ M src/components/layout/Footer.tsx
+ M src/components/layout/IntroLoader.tsx
+ M src/components/layout/Layout.tsx
+ M src/components/layout/PageTransition.tsx
+ M src/components/layout/ScrollManager.tsx
+ M src/components/layout/Seo.tsx
+ M src/components/shared/CaseStudyEntry.tsx
+ M src/components/shared/ProjectCTA.tsx
+ M src/components/ui/SectionHeading.tsx
+ M src/contexts/IntroContext.tsx
+ M src/data/about.ts
+ M src/data/caseStudies.ts
+ M src/data/insights.ts
+ M src/data/products.ts
+ M src/data/servicePagesEngineering.ts
+ M src/data/servicePagesPlatform.ts
+ M src/data/site.ts
+ M src/data/technologies.ts
+ M src/hooks/useActiveSection.ts
+ M src/hooks/useContactForm.ts
+ M src/hooks/useMediaQuery.ts
+ M src/hooks/useStep.ts
+ M src/main.tsx
+ M src/pages/About.tsx
+ M src/pages/Contact.tsx
+ M src/pages/Home.tsx
+ M src/pages/Insights.tsx
+ M src/pages/Legal.tsx
+ M src/pages/NotFound.tsx
+ M src/pages/ServiceDetail.tsx
+ M src/pages/ServicesIndex.tsx
+ M src/types/content.ts
+ M src/utils/seo.ts
+ M tsconfig.app.json
+ M tsconfig.node.json
+ M vite.config.ts
+?? api/contact.ts
+?? middleware.ts
+?? public/favicon.svg
+?? public/images/anchor-news-publishing-interface-1200-1901e041b2.webp
+?? public/images/anchor-news-publishing-interface-1600-1901e041b2.webp
+?? public/images/anchor-news-publishing-interface-480-1901e041b2.webp
+?? public/images/anchor-news-publishing-interface-800-1901e041b2.webp
+?? public/images/anchor-news-publishing-interface-social-1901e041b2.jpg
+?? public/images/bestseller-auto-vehicle-search-1200-0d85bc2d8b.webp
+?? public/images/bestseller-auto-vehicle-search-1600-0d85bc2d8b.webp
+?? public/images/bestseller-auto-vehicle-search-480-0d85bc2d8b.webp
+?? public/images/bestseller-auto-vehicle-search-800-0d85bc2d8b.webp
+?? public/images/bestseller-auto-vehicle-search-social-0d85bc2d8b.jpg
+?? public/images/brij-logistics-tracking-interface-1200-408798dd93.webp
+?? public/images/brij-logistics-tracking-interface-1600-408798dd93.webp
+?? public/images/brij-logistics-tracking-interface-480-408798dd93.webp
+?? public/images/brij-logistics-tracking-interface-800-408798dd93.webp
+?? public/images/brij-logistics-tracking-interface-social-408798dd93.jpg
+?? public/images/ctrotech-logo.png
+?? public/images/ctrotech-software-platform-preview-1200-bd926ddda5.webp
+?? public/images/ctrotech-software-platform-preview-1600-bd926ddda5.webp
+?? public/images/ctrotech-software-platform-preview-480-bd926ddda5.webp
+?? public/images/ctrotech-software-platform-preview-800-bd926ddda5.webp
+?? public/images/ctrotech-software-platform-preview-social-bd926ddda5.jpg
+?? public/images/software-engineering-collaboration-1200-4ecd204e8f.webp
+?? public/images/software-engineering-collaboration-1264-4ecd204e8f.webp
+?? public/images/software-engineering-collaboration-480-4ecd204e8f.webp
+?? public/images/software-engineering-collaboration-800-4ecd204e8f.webp
+?? public/images/software-engineering-collaboration-social-4ecd204e8f.jpg
+?? reports/SEO-IMPLEMENTATION.md
+?? reports/changed-files.txt
+?? reports/image-optimization.json
+?? reports/seo-routes.json
+?? scripts/optimize-images.mjs
+?? scripts/prerender.mjs
+?? scripts/preview.mjs
+?? scripts/seo.test.mjs
+?? server/contact.test.mjs
+?? server/contact.ts
+?? src/AppRoutes.tsx
+?? src/components/brand/CtrotechSymbol.tsx
+?? src/contexts/introState.ts
+?? src/data/seo.ts
+?? src/entry-server.tsx
+?? src/fonts.css
+?? src/generated/images.json
+?? src/utils/siteIdentity.ts
+?? src/utils/urlNormalization.ts
+?? vercel.json

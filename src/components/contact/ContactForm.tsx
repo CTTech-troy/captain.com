@@ -12,6 +12,7 @@ export function ContactForm({ form }: {form: ContactFormController;}) {
 
   return (
     <form onSubmit={submit} noValidate aria-busy={submitting} className="space-y-6">
+      <fieldset disabled={submitting} className="min-w-0 space-y-6">
       <FormSection number="01" title="About you">
         <div className="grid gap-5 md:grid-cols-2">
           <TextField id="field-name" label="Name" required autoComplete="name" value={values.name} onChange={(v) => setField('name', v)} error={errors.name} />
@@ -104,7 +105,7 @@ export function ContactForm({ form }: {form: ContactFormController;}) {
 
       <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-sm text-[13px] leading-relaxed text-muted">
-          We use your details only to respond to this enquiry. Nothing is shared with third parties.
+          We use your details only to respond to this enquiry. Your brief is delivered securely using our email service provider.
         </p>
         <Button
           type="submit"
@@ -114,6 +115,7 @@ export function ContactForm({ form }: {form: ContactFormController;}) {
           {submitting ? 'Sending brief…' : 'Send project brief'}
         </Button>
       </div>
+      </fieldset>
     </form>);
 
 }

@@ -1,6 +1,6 @@
 import type { ProductCategory } from '../types/content';
 
-/** Future Captain.com product categories. No products are announced yet. */
+/** Future Ctrotech.com product categories. No products are announced yet. */
 export const productCategories: ProductCategory[] = [
 { id: 'ai-platforms', title: 'AI platforms', body: 'Platforms for deploying and supervising AI agents inside a business.', icon: 'bot' },
 { id: 'security-products', title: 'Cybersecurity products', body: 'Tools that make continuous security practical for growing teams.', icon: 'shield' },

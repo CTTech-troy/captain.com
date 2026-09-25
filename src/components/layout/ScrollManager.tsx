@@ -10,7 +10,8 @@ export function ScrollManager() {
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
       return;
     }
-    const id = decodeURIComponent(hash.slice(1));
+    let id: string;
+    try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let tries = 0;
     let timer = 0;

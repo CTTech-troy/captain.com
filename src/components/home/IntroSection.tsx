@@ -9,7 +9,7 @@ export function IntroSection() {
         <SectionHeading
           className="lg:col-span-5"
           id="intro-title"
-          label="Captain.com"
+          label="Ctrotech.com"
           title="Software is infrastructure."
           highlight={['infrastructure.']}
           support="We engineer digital systems that support operations, automate workflows, protect data and help businesses scale." />

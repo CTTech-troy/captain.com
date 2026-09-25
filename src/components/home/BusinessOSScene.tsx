@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { AnimatePresence, motion, useTransform } from 'framer-motion';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
 import { SectionHeading } from '../ui/SectionHeading';
 import { ServiceIcon } from '../ui/ServiceIcon';
 import { businessModules, businessPhases } from '../../data/scenes';
@@ -23,7 +23,7 @@ const SCATTER: [number, number][] = [
 [-36, -16], [30, -24], [42, 10], [18, 32], [-24, 36], [-40, 14], [-28, -28], [34, -12], [10, 28]];
 
 
-/** Nine business systems connect, one by one, to a central Captain platform. */
+/** Nine business systems connect, one by one, to a central Ctrotech platform. */
 export function BusinessOSScene() {
   const { sectionRef, contentRef, animationRef, progress, reduce, pinned } = useResponsiveScene();
   const isDesktop = useMediaQuery('(min-width: 1024px)');
@@ -135,11 +135,11 @@ export function BusinessOSScene() {
             <div data-business-hub className="absolute left-1/2 top-1/2 w-[28%] -translate-x-1/2 -translate-y-1/2 lg:w-[22%]">
               <motion.div style={{ scale: hubScale }} className="relative flex flex-col items-center text-center">
                 <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-forest-800 text-white shadow-[0_24px_60px_-20px_rgba(14,74,50,0.55)] sm:h-20 sm:w-20 lg:h-28 lg:w-28">
-                  <CaptainSymbol size={isDesktop ? 50 : 34} className="text-white" />
+                  <CtrotechSymbol size={isDesktop ? 50 : 34} className="text-white" />
                   <span className="absolute -inset-1.5 rounded-full border border-forest-800/20 lg:-inset-3" />
                 </div>
                 <div className="absolute inset-x-0 top-full mt-3">
-                  <p className="rounded bg-mist px-1 font-display text-[13px] font-semibold leading-tight tracking-[-0.01em] text-ink sm:text-base lg:text-lg">Captain Platform</p>
+                  <p className="rounded bg-mist px-1 font-display text-[13px] font-semibold leading-tight tracking-[-0.01em] text-ink sm:text-base lg:text-lg">Ctrotech Platform</p>
                   <p className="mt-1 rounded bg-mist px-1 font-mono text-[9px] uppercase tracking-[0.04em] text-muted sm:text-[10px] lg:text-[11px]">
                     {connected}/{total} connected
                   </p>

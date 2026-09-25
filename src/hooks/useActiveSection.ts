@@ -7,7 +7,7 @@ export function useActiveSection(ids: string[], enabled: boolean): string | null
 
   useEffect(() => {
     if (!enabled) {
-      setActive(null);
+
       return;
     }
     let observer: IntersectionObserver | null = null;
@@ -44,5 +44,5 @@ export function useActiveSection(ids: string[], enabled: boolean): string | null
     };
   }, [key, enabled]);
 
-  return active;
+  return enabled ? active : null;
 }

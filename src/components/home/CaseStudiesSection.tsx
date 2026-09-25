@@ -15,7 +15,7 @@ export function CaseStudiesSection() {
             title="Case studies, told in full." />
           
           <p className="max-w-md text-[15px] leading-relaxed text-muted lg:col-span-5 lg:justify-self-end">
-            Captain.com case studies are being prepared for publication with client approval. The entries below are clearly
+            Ctrotech.com case studies are being prepared for publication with client approval. The entries below are clearly
             marked placeholders that show the format every study will follow — no clients or results are implied.
           </p>
         </div>

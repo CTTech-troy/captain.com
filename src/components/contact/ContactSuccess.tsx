@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
 import { Button } from '../ui/Button';
 import { ButtonLink } from '../ui/ButtonLink';
 import { EASE_OUT } from '../../utils/motion';
@@ -27,7 +27,7 @@ export function ContactSuccess({ values, onReset }: ContactSuccessProps) {
       transition={{ duration: 0.3, ease: EASE_OUT }}
       className="rounded-3xl bg-forest-800 p-8 text-white md:p-12">
       
-      <CaptainSymbol size={56} draw className="text-white" />
+      <CtrotechSymbol size={56} draw className="text-white" />
       <h2 className="display-heading mt-8 text-[clamp(2rem,4vw,3.25rem)] leading-none">Brief received.</h2>
       <p className="mt-4 max-w-lg text-[17px] leading-relaxed text-white/80">
         Thank you, {values.name.split(' ')[0]}. An engineer will review what you’re building and reply to {values.email}.

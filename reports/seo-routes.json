@@ -1,0 +1,178 @@
+[
+  {
+    "path": "/",
+    "file": "index.html",
+    "title": "Software Development, AI & Cybersecurity | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 263851
+  },
+  {
+    "path": "/about",
+    "file": "about.html",
+    "title": "About Our Software Engineering Company | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 45743
+  },
+  {
+    "path": "/contact",
+    "file": "contact.html",
+    "title": "Contact Us & Discuss Your Software Project | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 48027
+  },
+  {
+    "path": "/services",
+    "file": "services.html",
+    "title": "Software, AI, Security & Cloud Services | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 45702
+  },
+  {
+    "path": "/insights",
+    "file": "insights.html",
+    "title": "Engineering Insights | Ctrotech.com",
+    "indexable": false,
+    "status": 200,
+    "bytes": 21443
+  },
+  {
+    "path": "/services/software-development",
+    "file": "services/software-development.html",
+    "title": "Custom Software Development Company | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 51442
+  },
+  {
+    "path": "/services/web-development",
+    "file": "services/web-development.html",
+    "title": "Website Design & Web Application Development | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 56010
+  },
+  {
+    "path": "/services/mobile-development",
+    "file": "services/mobile-development.html",
+    "title": "iOS & Android App Development Company | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 51168
+  },
+  {
+    "path": "/services/desktop-development",
+    "file": "services/desktop-development.html",
+    "title": "Desktop Application Development — Windows, macOS, Linux | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 50866
+  },
+  {
+    "path": "/services/embedded-systems",
+    "file": "services/embedded-systems.html",
+    "title": "Embedded Systems, Firmware & IoT Development | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 51169
+  },
+  {
+    "path": "/services/api-development",
+    "file": "services/api-development.html",
+    "title": "API Development & Integration Services | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 51179
+  },
+  {
+    "path": "/services/ai-automation",
+    "file": "services/ai-automation.html",
+    "title": "AI Automation, AI Agents & Workflow Automation | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 53617
+  },
+  {
+    "path": "/services/cybersecurity",
+    "file": "services/cybersecurity.html",
+    "title": "Cybersecurity as a Service & Penetration Testing | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 51000
+  },
+  {
+    "path": "/services/cloud-infrastructure",
+    "file": "services/cloud-infrastructure.html",
+    "title": "Cloud Infrastructure, DevOps & CI/CD Services | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 48998
+  },
+  {
+    "path": "/services/business-operating-systems",
+    "file": "services/business-operating-systems.html",
+    "title": "Custom Business Operating Systems & Enterprise Software | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 55619
+  },
+  {
+    "path": "/services/software-modernization",
+    "file": "services/software-modernization.html",
+    "title": "Legacy Software Modernization & Cloud Migration | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 49388
+  },
+  {
+    "path": "/services/seo",
+    "file": "services/seo.html",
+    "title": "Technical SEO & Website Performance Optimization | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 53299
+  },
+  {
+    "path": "/services/digital-creative",
+    "file": "services/digital-creative.html",
+    "title": "Digital Branding, Video Editing & Motion Graphics | Ctrotech.com",
+    "indexable": true,
+    "status": 200,
+    "bytes": 53206
+  },
+  {
+    "path": "/legal/privacy",
+    "file": "legal/privacy.html",
+    "title": "Privacy Policy | Ctrotech.com",
+    "indexable": false,
+    "status": 200,
+    "bytes": 17626
+  },
+  {
+    "path": "/legal/terms",
+    "file": "legal/terms.html",
+    "title": "Terms of Use | Ctrotech.com",
+    "indexable": false,
+    "status": 200,
+    "bytes": 17481
+  },
+  {
+    "path": "/legal/security",
+    "file": "legal/security.html",
+    "title": "Security | Ctrotech.com",
+    "indexable": false,
+    "status": 200,
+    "bytes": 17677
+  },
+  {
+    "path": "/404",
+    "file": "404.html",
+    "title": "Page Not Found | Ctrotech.com",
+    "indexable": false,
+    "status": 404,
+    "bytes": 17668
+  }
+]

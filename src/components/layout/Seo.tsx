@@ -1,69 +1,39 @@
-import { useEffect } from 'react';
-import type { JsonLd } from '../../utils/seo';
-import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_NAME } from '../../utils/seo';
+﻿import { useEffect } from 'react';
+import { getPageSeo } from '../../data/seo';
+import { absoluteUrl, metadataEntries, pageJsonLd, serializeJsonLd } from '../../utils/seo';
 
-interface SeoProps {
-  title: string;
-  description: string;
-  path: string;
-  type?: 'website' | 'article';
-  jsonLd?: JsonLd[];
-}
-
-/**
- * Client-side head management (title, description, Open Graph, X cards,
- * canonical, JSON-LD). With SSR / static generation, render the same values
- * server-side from these props.
- */
-export function Seo({ title, description, path, type = 'website', jsonLd = [] }: SeoProps) {
-  const jsonLdString = JSON.stringify(jsonLd);
-
+/** The same metadata is emitted into built HTML and updated on client navigation. */
+export function Seo({ path }: { path: string }) {
+  const page = getPageSeo(path);
   useEffect(() => {
-    const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
-    const url = absoluteUrl(path);
-    document.title = fullTitle;
-    document.documentElement.lang = 'en';
-
-    setMeta('name', 'description', description);
-    setMeta('property', 'og:title', fullTitle);
-    setMeta('property', 'og:description', description);
-    setMeta('property', 'og:url', url);
-    setMeta('property', 'og:type', type);
-    setMeta('property', 'og:site_name', SITE_NAME);
-    setMeta('property', 'og:image', DEFAULT_OG_IMAGE);
-    setMeta('name', 'twitter:card', 'summary_large_image');
-    setMeta('name', 'twitter:title', fullTitle);
-    setMeta('name', 'twitter:description', description);
-    setMeta('name', 'twitter:image', DEFAULT_OG_IMAGE);
-    setCanonical(url);
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.dataset.seo = 'page';
-    script.text = jsonLdString;
-    document.head.appendChild(script);
-    return () => script.remove();
-  }, [title, description, path, type, jsonLdString]);
-
+    document.title = page.title;
+    for (const [attribute, key, content] of metadataEntries(page)) {
+      let element = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attribute, key);
+        document.head.appendChild(element);
+      }
+      element.content = content;
+    }
+    let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (page.status === 404) canonical?.remove();
+    else {
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        document.head.appendChild(canonical);
+      }
+      canonical.href = absoluteUrl(page.path);
+    }
+    let schema = document.getElementById('page-schema') as HTMLScriptElement | null;
+    if (!schema) {
+      schema = document.createElement('script');
+      schema.id = 'page-schema';
+      schema.type = 'application/ld+json';
+      document.head.appendChild(schema);
+    }
+    schema.textContent = serializeJsonLd(pageJsonLd(page));
+  }, [page]);
   return null;
-}
-
-function setMeta(attribute: 'name' | 'property', key: string, content: string) {
-  let element = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`);
-  if (!element) {
-    element = document.createElement('meta');
-    element.setAttribute(attribute, key);
-    document.head.appendChild(element);
-  }
-  element.setAttribute('content', content);
-}
-
-function setCanonical(url: string) {
-  let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-  if (!link) {
-    link = document.createElement('link');
-    link.rel = 'canonical';
-    document.head.appendChild(link);
-  }
-  link.href = url;
 }

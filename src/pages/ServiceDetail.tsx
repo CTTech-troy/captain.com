@@ -13,7 +13,6 @@ import { ProjectCTA } from '../components/shared/ProjectCTA';
 import { NotFound } from './NotFound';
 import { servicePages } from '../data/servicePages';
 import { caseStudiesForService, findIndustry, findServicePage, pillarLabel } from '../utils/content';
-import { breadcrumbJsonLd, serviceJsonLd } from '../utils/seo';
 import { EASE_OUT, fadeUp, popIn, staggerContainer } from '../utils/motion';
 
 export function ServiceDetail() {
@@ -32,7 +31,7 @@ export function ServiceDetail() {
 
   return (
     <>
-      <Seo title={page.metaTitle} description={page.metaDescription} path={`/services/${page.slug}`} jsonLd={[serviceJsonLd(page), breadcrumbJsonLd(crumbs)]} />
+      <Seo path={`/services/${page.slug}`} />
 
       {/* Hero */}
       <section className="bg-white pb-20 pt-28 md:pb-28 md:pt-36">

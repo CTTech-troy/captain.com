@@ -17,7 +17,7 @@ export function Legal() {
 
   return (
     <>
-      <Seo title={doc.title} description={doc.summary} path={`/legal/${doc.slug}`} />
+      <Seo path={`/legal/${doc.slug}`} />
       <section className="min-h-[75vh] bg-white pb-28 pt-28 md:pt-36">
         <div className="container-page max-w-4xl">
           <Breadcrumbs items={crumbs} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
 import { EASE_IN_OUT, EASE_OUT } from '../../utils/motion';
 
 const BARS = [
@@ -17,14 +17,12 @@ const BARS = [
 export function PageTransition() {
   const { pathname } = useLocation();
   const reduce = useReducedMotion();
-  const first = useRef(true);
+  const previousPath = useRef(pathname);
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    if (first.current) {
-      first.current = false;
-      return;
-    }
+    if (previousPath.current === pathname) return;
+    previousPath.current = pathname;
     setKey((k) => k + 1);
   }, [pathname]);
 
@@ -56,7 +54,7 @@ export function PageTransition() {
           animate={{ opacity: [0, 1, 0], scale: [0.96, 1, 1.1] }}
           transition={{ duration: 0.3, delay: 0.08, ease: EASE_OUT }}>
           
-            <CaptainSymbol size={40} />
+            <CtrotechSymbol size={40} />
           </motion.span>
         </motion.div>
       }

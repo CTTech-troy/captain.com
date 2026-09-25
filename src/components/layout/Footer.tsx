@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpIcon, ArrowUpRightIcon } from 'lucide-react';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
-import { footerColumns, socialLinks } from '../../data/site';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
+import { footerColumns } from '../../data/site';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -15,10 +15,10 @@ export function Footer() {
       <div className="container-page pb-10 pt-20 md:pt-24">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Link to="/" aria-label="Captain.com home" className="inline-flex items-center gap-3 text-forest-800">
-              <CaptainSymbol size={44} />
+            <Link to="/" aria-label="Ctrotech.com home" className="inline-flex items-center gap-3 text-forest-800">
+              <CtrotechSymbol size={44} />
               <span className="font-display text-4xl font-semibold tracking-[-0.04em] text-forest-900">
-                Captain<span className="text-forest-600">.com</span>
+                Ctrotech<span className="text-forest-600">.com</span>
               </span>
             </Link>
             <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-xl font-medium tracking-[-0.02em] text-forest-800">
@@ -51,28 +51,15 @@ export function Footer() {
                 </ul>
               </nav>
             )}
-            <nav aria-label="Social">
-              <h3 className="label-mono text-forest-600">Social</h3>
-              <ul className="mt-5 space-y-3">
-                {socialLinks.map((link) =>
-                <li key={link.label}>
-                    <a
-                    href={link.to}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-underline text-[14px] text-forest-900 transition-colors hover:text-forest-600">
-                    
-                      {link.label}
-                    </a>
-                  </li>
-                )}
-              </ul>
-            </nav>
+            <nav aria-label="Contact">
+<h3 className="label-mono text-forest-600">Contact</h3>
+<a href="mailto:support@ctrotech.com" className="mt-5 inline-block break-all text-[14px] text-forest-900 underline-offset-4 hover:underline">support@ctrotech.com</a>
+</nav>
           </div>
         </div>
 
         <div className="mt-20 flex flex-col gap-4 border-t border-line pt-6 text-[13px] text-forest-800/80 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Captain.com. All rights reserved.</p>
+          <p>© {year} Ctrotech.com. All rights reserved.</p>
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

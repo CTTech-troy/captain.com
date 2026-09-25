@@ -8,7 +8,7 @@ export const platformServicePages: ServicePage[] = [
   title: 'AI Automation',
   metaTitle: 'AI Automation, AI Agents & Workflow Automation',
   metaDescription:
-  'AI agents and automated workflows that process documents, support customers and keep business systems in sync — designed and operated by Captain.com.',
+  'AI agents and automated workflows that process documents, support customers and keep business systems in sync — designed and operated by Ctrotech.com.',
   heroTitle: 'Turn manual work into software.',
   heroCopy:
   'AI agents and automated workflows that read documents, answer customers, make routine decisions and keep your systems in sync.',
@@ -45,7 +45,7 @@ export const platformServicePages: ServicePage[] = [
   title: 'Cybersecurity',
   metaTitle: 'Cybersecurity as a Service & Penetration Testing',
   metaDescription:
-  'Penetration testing, application, API and cloud security, and continuous security monitoring — delivered as a service by Captain.com engineers.',
+  'Penetration testing, application, API and cloud security, and continuous security monitoring — delivered as a service by Ctrotech.com engineers.',
   heroTitle: 'Build secure. Stay secure.',
   heroCopy:
   'Penetration testing, application and cloud security, and ongoing monitoring — delivered as a service by engineers who also build software.',
@@ -82,7 +82,7 @@ export const platformServicePages: ServicePage[] = [
   title: 'Cloud Infrastructure',
   metaTitle: 'Cloud Infrastructure, DevOps & CI/CD Services',
   metaDescription:
-  'Cloud architecture, DevOps, containers, monitoring and disaster recovery across AWS, Azure and Google Cloud — engineered by Captain.com.',
+  'Cloud architecture, DevOps, containers, monitoring and disaster recovery across AWS, Azure and Google Cloud — engineered by Ctrotech.com.',
   heroTitle: 'Infrastructure that stays up as you scale.',
   heroCopy:
   'Cloud architecture, DevOps and CI/CD, containers, monitoring and disaster recovery across AWS, Azure and Google Cloud.',
@@ -156,7 +156,7 @@ export const platformServicePages: ServicePage[] = [
   title: 'Software Modernization',
   metaTitle: 'Legacy Software Modernization & Cloud Migration',
   metaDescription:
-  'Captain.com modernizes legacy PHP, Java and .NET applications, old databases and APIs — migrating to modern, secure architecture without stopping the business.',
+  'Ctrotech.com modernizes legacy PHP, Java and .NET applications, old databases and APIs — migrating to modern, secure architecture without stopping the business.',
   heroTitle: 'Modernize the systems you can’t afford to lose.',
   heroCopy:
   'Legacy PHP, Java and .NET applications, old databases and APIs — migrated to modern architecture and cloud without stopping the business.',
@@ -193,7 +193,7 @@ export const platformServicePages: ServicePage[] = [
   title: 'SEO & Digital Performance',
   metaTitle: 'Technical SEO & Website Performance Optimization',
   metaDescription:
-  'Technical SEO, performance engineering, structured data, analytics and content architecture for international search visibility — by Captain.com.',
+  'Technical SEO, performance engineering, structured data, analytics and content architecture for international search visibility — by Ctrotech.com.',
   heroTitle: 'Be found. Load fast. Convert.',
   heroCopy:
   'Technical SEO, performance engineering, structured data, analytics and content architecture for international search visibility.',
@@ -230,7 +230,7 @@ export const platformServicePages: ServicePage[] = [
   title: 'Digital & Creative',
   metaTitle: 'Digital Branding, Video Editing & Motion Graphics',
   metaDescription:
-  'Video editing, motion graphics, digital and social media branding, and content production by the Captain.com creative team.',
+  'Video editing, motion graphics, digital and social media branding, and content production by the Ctrotech.com creative team.',
   heroTitle: 'Creative that carries the brand.',
   heroCopy:
   'Video editing, motion graphics, digital and social media branding, and content production — created by a team that understands the product.',

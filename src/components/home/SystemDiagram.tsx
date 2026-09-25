@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useTransform } from 'framer-motion';
 import type { MotionValue } from 'framer-motion';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
 import { ServiceIcon } from '../ui/ServiceIcon';
 import { introSatellites } from '../../data/scenes';
 import { useSceneProgress } from '../../hooks/useSceneProgress';
@@ -66,7 +66,7 @@ export function SystemDiagram() {
           className="flex items-center gap-3 rounded-2xl bg-forest-800 py-3 pl-3 pr-5 text-white shadow-[0_24px_48px_-24px_rgba(14,74,50,0.6)] md:py-4 md:pl-4 md:pr-6">
           
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 md:h-10 md:w-10">
-            <CaptainSymbol size={22} className="text-white" />
+            <CtrotechSymbol size={22} className="text-white" />
           </span>
           <span>
             <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/60 md:text-[10px]">Core</span>

@@ -1,6 +1,6 @@
 import React, { PointerEvent, useRef, useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
 import { SectionHeading } from '../ui/SectionHeading';
 import { ServiceIcon } from '../ui/ServiceIcon';
 import { productCategories } from '../../data/products';
@@ -46,8 +46,8 @@ export function ProductsSection() {
             className="lg:col-span-7"
             id="products-title"
             label="Products"
-            title="Built by Captain."
-            highlight={['captain.']}
+            title="Built by Ctrotech."
+            highlight={['ctrotech.']}
             support="We are developing proprietary products from what we learn in the field. Nothing is announced yet — these are the categories we are exploring." />
           
           <div className="flex gap-2 lg:col-span-5 lg:justify-self-end">
@@ -87,7 +87,7 @@ export function ProductsSection() {
               key={product.id}
               className="relative flex min-h-[340px] w-[min(290px,calc(100vw-2.5rem))] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-dashed border-forest-200 bg-soft p-5 sm:p-7 md:w-[360px]">
               
-                <CaptainSymbol size={200} strokeWidth={3} showAccent={false} className="pointer-events-none absolute -bottom-16 -right-16 text-forest-100" />
+                <CtrotechSymbol size={200} strokeWidth={3} showAccent={false} className="pointer-events-none absolute -bottom-16 -right-16 text-forest-100" />
                 <div className="relative flex items-center justify-between">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-forest-800">
                     <ServiceIcon name={product.icon} className="h-5 w-5" />
@@ -99,7 +99,7 @@ export function ProductsSection() {
                 </div>
                 <h3 className="relative mt-10 font-display text-[24px] font-semibold leading-tight tracking-[-0.02em] text-ink">{product.title}</h3>
                 <p className="relative mt-3 text-[15px] leading-relaxed text-muted">{product.body}</p>
-                <p className="label-mono relative mt-auto pt-8 text-forest-700">Built by Captain</p>
+                <p className="label-mono relative mt-auto pt-8 text-forest-700">Built by Ctrotech</p>
               </li>
             )}
           </ul>

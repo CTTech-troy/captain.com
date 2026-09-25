@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 
 export interface ContactFormValues {
@@ -42,6 +42,8 @@ export function useContactForm() {
   const [values, setValues] = useState<ContactFormValues>(INITIAL);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [status, setStatus] = useState<ContactStatus>('idle');
+  const inFlight = useRef(false);
+  const lastSubmission = useRef({ body: '', key: '' });
 
   const setField = <K extends keyof ContactFormValues,>(key: K, value: ContactFormValues[K]) => {
     setValues((current) => ({ ...current, [key]: value }));
@@ -63,6 +65,7 @@ export function useContactForm() {
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (inFlight.current) return;
     const nextErrors = validate(values);
     setErrors(nextErrors);
     const firstInvalid = FIELD_ORDER.find((key) => nextErrors[key]);
@@ -70,12 +73,19 @@ export function useContactForm() {
       document.getElementById(`field-${firstInvalid}`)?.focus();
       return;
     }
+    inFlight.current = true;
     setStatus('submitting');
     try {
-      await submitBrief(values);
+      const body = JSON.stringify(values);
+      if (lastSubmission.current.body !== body) {
+        lastSubmission.current = { body, key: crypto.randomUUID() };
+      }
+      await submitBrief(body, lastSubmission.current.key);
       setStatus('success');
     } catch {
       setStatus('error');
+    } finally {
+      inFlight.current = false;
     }
   };
 
@@ -83,6 +93,7 @@ export function useContactForm() {
     setValues(INITIAL);
     setErrors({});
     setStatus('idle');
+    lastSubmission.current = { body: '', key: '' };
   };
 
   return { values, errors, status, completion, setField, toggleService, submit, reset };
@@ -103,8 +114,13 @@ function validate(values: ContactFormValues): ContactFormErrors {
   return errors;
 }
 
-/** Integration point: replace with the production API / CRM endpoint. */
-async function submitBrief(values: ContactFormValues): Promise<void> {
-  await new Promise((resolve) => window.setTimeout(resolve, 1200));
-  if (!values.email) throw new Error('Missing email');
+async function submitBrief(body: string, requestId: string): Promise<void> {
+  const response = await fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Idempotency-Key': requestId },
+    body,
+    signal: AbortSignal.timeout(25_000)
+  });
+  const result = await response.json();
+  if (!response.ok || result?.success !== true) throw new Error('Unable to send brief');
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { CheckIcon } from 'lucide-react';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
 import { SectionHeading } from '../ui/SectionHeading';
 import { ServiceIcon } from '../ui/ServiceIcon';
 import { managedLoop, managedServices } from '../../data/process';
@@ -41,7 +41,7 @@ export function ManagedSection() {
           </motion.div>
 
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-            <CaptainSymbol size={48} className="text-forest-800" />
+            <CtrotechSymbol size={48} className="text-forest-800" />
             <p className="label-mono mt-3 text-muted">Continuous operation</p>
           </div>
 
@@ -78,7 +78,7 @@ export function ManagedSection() {
             label="Managed technology"
             title="We don't disappear after deployment."
             highlight={["don't"]}
-            support="Software needs maintenance, monitoring, security and continuous improvement. Captain.com provides ongoing technology support after launch." />
+            support="Software needs maintenance, monitoring, security and continuous improvement. Ctrotech.com provides ongoing technology support after launch." />
           
           <ul className="mt-10 grid border-t border-line sm:grid-cols-2 sm:gap-x-10">
             {managedServices.map((service) =>

@@ -11,19 +11,12 @@ interface CaseStudyEntryProps {
   headingLevel?: 'h3' | 'h4';
 }
 
-/** Editorial case study: masked image reveal, info enters from the opposite side. */
+/** Editorial case study with a subtle image zoom. */
 export function CaseStudyEntry({ study, index, headingLevel = 'h3' }: CaseStudyEntryProps) {
   const ref = useRef<HTMLElement>(null);
   const { progress } = useSceneProgress(ref, ['start end', 'center center']);
   const reversed = index % 2 === 1;
-  const clipPath = useTransform(
-    progress,
-    [0, 0.7],
-    [reversed ? 'inset(0% 0% 0% 100% round 20px)' : 'inset(0% 100% 0% 0% round 20px)', 'inset(0% 0% 0% 0% round 20px)']
-  );
-  const imageScale = useTransform(progress, [0, 1], [1.15, 1]);
-  const infoX = useTransform(progress, [0.1, 0.8], [reversed ? -56 : 56, 0]);
-  const infoOpacity = useTransform(progress, [0.1, 0.6], [0, 1]);
+  const imageScale = useTransform(progress, [0, 1], [1.03, 1]);
   const Heading = headingLevel;
 
   const rows: [string, string][] = [
@@ -37,15 +30,17 @@ export function CaseStudyEntry({ study, index, headingLevel = 'h3' }: CaseStudyE
   return (
     <article ref={ref} aria-labelledby={`${study.id}-title`} className="grid items-start gap-10 overflow-x-clip lg:grid-cols-12 lg:gap-14">
       <div className={cn('lg:col-span-7', reversed && 'lg:order-2')}>
-        <motion.div style={{ clipPath }} className="relative overflow-hidden rounded-[20px] bg-mist" data-cursor="view">
+        <motion.div className="relative overflow-hidden rounded-[20px] bg-mist" data-cursor="view">
           <motion.div style={{ scale: imageScale }} className="aspect-[3/2] w-full">
             <img
               src={study.image}
+              srcSet={study.imageSrcSet}
+              sizes="(min-width: 1024px) 56vw, 94vw"
               alt={study.imageAlt}
               loading="lazy"
               decoding="async"
-              width={1200}
-              height={800}
+              width={study.imageWidth}
+              height={study.imageHeight}
               className="h-full w-full object-contain bg-white transition-transform duration-300 ease-out-strong hover:scale-[1.03]" />
             
           </motion.div>
@@ -87,7 +82,7 @@ export function CaseStudyEntry({ study, index, headingLevel = 'h3' }: CaseStudyE
         </div>
       </div>
 
-      <motion.div style={{ x: infoX, opacity: infoOpacity }} className={cn('lg:col-span-5', reversed && 'lg:order-1')}>
+      <motion.div className={cn('lg:col-span-5', reversed && 'lg:order-1')}>
         <p className="label-mono text-forest-700">{study.industry}</p>
         <Heading id={`${study.id}-title`} className="mt-3 font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-ink">
           {study.title}

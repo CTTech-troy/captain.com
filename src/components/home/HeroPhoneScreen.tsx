@@ -31,7 +31,7 @@ export function HeroPhoneScreen({ ready }: {ready: boolean;}) {
           <ServiceIcon name="bot" className="h-[1.3em] w-[1.3em]" strokeWidth={2} />
         </span>
         <div className="leading-tight">
-          <p className="font-display text-[1.25em] font-semibold">Captain AI</p>
+          <p className="font-display text-[1.25em] font-semibold">Ctrotech AI</p>
           <p className="flex items-center gap-1 text-muted">
             <span className="h-[0.5em] w-[0.5em] rounded-full bg-forest-500" /> Agent active
           </p>

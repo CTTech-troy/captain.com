@@ -13,7 +13,7 @@ export function EcosystemStrip({ ready }: {ready: boolean;}) {
   return (
     <div className="container-page relative pb-12 pt-10 md:pb-16 md:pt-14">
       <div className="flex items-center justify-between border-t border-line pt-5">
-        <p className="label-mono text-muted">The Captain ecosystem</p>
+        <p className="label-mono text-muted">The Ctrotech ecosystem</p>
         <p className="label-mono hidden items-center gap-2 text-muted sm:flex">
           Scroll to explore <ArrowDownIcon className="h-3.5 w-3.5" aria-hidden="true" />
         </p>

@@ -6,7 +6,7 @@ export const aboutChapters: AboutChapter[] = [
   label: 'Who we are',
   title: 'An engineering company for the systems businesses run on.',
   body: [
-  'Captain.com is an international software engineering and technology company. We design, build, secure, automate and operate software for businesses, startups, enterprises and organisations.',
+  'Ctrotech.com is an international software engineering and technology company. We design, build, secure, automate and operate software for businesses, startups, enterprises and organisations.',
   'We are not a collection of disconnected digital services. Everything we do serves one purpose: giving organisations technology they can depend on.']
 
 },

@@ -9,5 +9,5 @@ export const insightCategories: string[] = [
 'Digital performance'];
 
 
-/** Published articles. Empty until the first Captain.com articles go live. */
+/** Published articles. Empty until the first Ctrotech.com articles go live. */
 export const articles: Article[] = [];

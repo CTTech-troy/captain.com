@@ -1,0 +1,32 @@
+[
+  {
+    "image": "hero",
+    "originalBytes": 1360688,
+    "optimizedBytes": 45138,
+    "savingsPercent": 97
+  },
+  {
+    "image": "about",
+    "originalBytes": 157633,
+    "optimizedBytes": 73042,
+    "savingsPercent": 54
+  },
+  {
+    "image": "bestseller",
+    "originalBytes": 2121244,
+    "optimizedBytes": 71876,
+    "savingsPercent": 97
+  },
+  {
+    "image": "anchor",
+    "originalBytes": 2002785,
+    "optimizedBytes": 72646,
+    "savingsPercent": 96
+  },
+  {
+    "image": "brij",
+    "originalBytes": 2256412,
+    "optimizedBytes": 84090,
+    "savingsPercent": 96
+  }
+]

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
-import { useIntro } from '../../contexts/IntroContext';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
+import { useIntro } from '../../contexts/introState';
 import { EASE_IN_OUT, EASE_OUT } from '../../utils/motion';
 
-const SESSION_KEY = 'captain-intro-seen';
+const SESSION_KEY = 'ctrotech-intro-seen';
 
 function shouldSkip(): boolean {
   if (typeof window === 'undefined') return true;
@@ -69,7 +69,7 @@ export function IntroLoader() {
         }
         }>
         
-        <CaptainSymbol size={76} draw />
+        <CtrotechSymbol size={76} draw />
       </motion.div>
     </motion.div>);
 

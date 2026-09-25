@@ -5,7 +5,7 @@ import { ButtonLink } from '../ui/ButtonLink';
 import { HeroVisual } from './HeroVisual';
 import { EcosystemStrip } from './EcosystemStrip';
 import { brand, heroAssurances } from '../../data/site';
-import { useIntro } from '../../contexts/IntroContext';
+import { useIntro } from '../../contexts/introState';
 import { EASE_OUT } from '../../utils/motion';
 
 export function HeroSection() {
@@ -66,7 +66,7 @@ export function HeroSection() {
 
           <motion.div {...reveal(0.54)} className="mt-9 flex flex-wrap items-center gap-2 pb-1 sm:gap-3">
             <ButtonLink className="shrink-0" to="/contact">Start a project</ButtonLink>
-            <ButtonLink className="shrink-0" to="/#capabilities" variant="secondary">
+            <ButtonLink className="shrink-0" to="/services" variant="secondary">
               Explore our services
             </ButtonLink>
             <button

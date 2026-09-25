@@ -7,7 +7,6 @@ import { ContactForm } from '../components/contact/ContactForm';
 import { ContactSuccess } from '../components/contact/ContactSuccess';
 import { useContactForm } from '../hooks/useContactForm';
 import { nextSteps } from '../data/contact';
-import { breadcrumbJsonLd } from '../utils/seo';
 
 const CRUMBS = [
 { name: 'Home', path: '/' },
@@ -19,11 +18,7 @@ export function Contact() {
 
   return (
     <>
-      <Seo
-        title="Start a Project"
-        description="Tell Captain.com what you're building. We'll help define the software, security and infrastructure required to build it."
-        path="/contact"
-        jsonLd={[breadcrumbJsonLd(CRUMBS)]} />
+      <Seo path="/contact" />
       
       <section className="bg-soft pb-24 pt-28 md:pb-32 md:pt-36">
         <div className="container-page grid gap-12 lg:grid-cols-12 lg:gap-14">

@@ -14,16 +14,11 @@ import { TechnologySection } from '../components/home/TechnologySection';
 import { ManagedSection } from '../components/home/ManagedSection';
 import { ProductsSection } from '../components/home/ProductsSection';
 import { ProjectCTA } from '../components/shared/ProjectCTA';
-import { DEFAULT_DESCRIPTION, organizationJsonLd, websiteJsonLd } from '../utils/seo';
 
 export function Home() {
   return (
     <>
-      <Seo
-        title="Captain.com — We build the software businesses depend on"
-        description={DEFAULT_DESCRIPTION}
-        path="/"
-        jsonLd={[organizationJsonLd(), websiteJsonLd()]} />
+      <Seo path="/" />
       
       <HeroSection />
       <IntroSection />

@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "src": "/images/ctrotech-software-platform-preview-1200-bd926ddda5.webp",
+    "width": 1200,
+    "height": 600,
+    "alt": "Ctrotech website preview with software operations and AI interfaces",
+    "srcSet": "/images/ctrotech-software-platform-preview-480-bd926ddda5.webp 480w, /images/ctrotech-software-platform-preview-800-bd926ddda5.webp 800w, /images/ctrotech-software-platform-preview-1200-bd926ddda5.webp 1200w, /images/ctrotech-software-platform-preview-1600-bd926ddda5.webp 1600w",
+    "social": {
+      "src": "/images/ctrotech-software-platform-preview-social-bd926ddda5.jpg",
+      "width": 1200,
+      "height": 600,
+      "alt": "Ctrotech website preview with software operations and AI interfaces"
+    }
+  },
+  "about": {
+    "src": "/images/software-engineering-collaboration-1200-4ecd204e8f.webp",
+    "width": 1200,
+    "height": 805,
+    "alt": "People collaborating around a table in a bright workspace — illustrative image",
+    "srcSet": "/images/software-engineering-collaboration-480-4ecd204e8f.webp 480w, /images/software-engineering-collaboration-800-4ecd204e8f.webp 800w, /images/software-engineering-collaboration-1200-4ecd204e8f.webp 1200w, /images/software-engineering-collaboration-1264-4ecd204e8f.webp 1264w",
+    "social": {
+      "src": "/images/software-engineering-collaboration-social-4ecd204e8f.jpg",
+      "width": 1200,
+      "height": 805,
+      "alt": "People collaborating around a table in a bright workspace — illustrative image"
+    }
+  },
+  "bestseller": {
+    "src": "/images/bestseller-auto-vehicle-search-1200-0d85bc2d8b.webp",
+    "width": 1200,
+    "height": 576,
+    "alt": "Bestseller Auto website showing vehicle listings, search filters and shipping navigation",
+    "srcSet": "/images/bestseller-auto-vehicle-search-480-0d85bc2d8b.webp 480w, /images/bestseller-auto-vehicle-search-800-0d85bc2d8b.webp 800w, /images/bestseller-auto-vehicle-search-1200-0d85bc2d8b.webp 1200w, /images/bestseller-auto-vehicle-search-1600-0d85bc2d8b.webp 1600w",
+    "social": {
+      "src": "/images/bestseller-auto-vehicle-search-social-0d85bc2d8b.jpg",
+      "width": 1200,
+      "height": 576,
+      "alt": "Bestseller Auto website showing vehicle listings, search filters and shipping navigation"
+    }
+  },
+  "anchor": {
+    "src": "/images/anchor-news-publishing-interface-1200-1901e041b2.webp",
+    "width": 1200,
+    "height": 579,
+    "alt": "Anchor News homepage with news categories, a lead story and latest headlines",
+    "srcSet": "/images/anchor-news-publishing-interface-480-1901e041b2.webp 480w, /images/anchor-news-publishing-interface-800-1901e041b2.webp 800w, /images/anchor-news-publishing-interface-1200-1901e041b2.webp 1200w, /images/anchor-news-publishing-interface-1600-1901e041b2.webp 1600w",
+    "social": {
+      "src": "/images/anchor-news-publishing-interface-social-1901e041b2.jpg",
+      "width": 1200,
+      "height": 579,
+      "alt": "Anchor News homepage with news categories, a lead story and latest headlines"
+    }
+  },
+  "brij": {
+    "src": "/images/brij-logistics-tracking-interface-1200-408798dd93.webp",
+    "width": 1200,
+    "height": 580,
+    "alt": "Brij logistics website with a delivery truck, shipment tracking and scheduling",
+    "srcSet": "/images/brij-logistics-tracking-interface-480-408798dd93.webp 480w, /images/brij-logistics-tracking-interface-800-408798dd93.webp 800w, /images/brij-logistics-tracking-interface-1200-408798dd93.webp 1200w, /images/brij-logistics-tracking-interface-1600-408798dd93.webp 1600w",
+    "social": {
+      "src": "/images/brij-logistics-tracking-interface-social-408798dd93.jpg",
+      "width": 1200,
+      "height": 580,
+      "alt": "Brij logistics website with a delivery truck, shipment tracking and scheduling"
+    }
+  }
+}

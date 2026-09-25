@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Navigation } from './Navigation';
 import { Footer } from './Footer';
-import { IntroLoader } from './IntroLoader';
+
 import { PageTransition } from './PageTransition';
 import { ScrollManager } from './ScrollManager';
 import { CustomCursor } from './CustomCursor';
@@ -16,7 +16,7 @@ export function Layout() {
         
         Skip to content
       </a>
-      <IntroLoader />
+
       <ScrollManager />
       <PageTransition />
       <CustomCursor />

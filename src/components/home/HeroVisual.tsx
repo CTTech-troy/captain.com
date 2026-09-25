@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion, MotionValue } from 'framer-motion';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
 import { ServiceIcon } from '../ui/ServiceIcon';
 import { HeroPhoneScreen } from './HeroPhoneScreen';
 import { heroChips } from '../../data/scenes';
 import { EASE_OUT } from '../../utils/motion';
 import { cn } from '../../utils/cn';
 
-const LAPTOP_SCREEN_IMAGE = '/hero.png';
+import images from '../../generated/images.json';
 
 /** 
  * Chip placement, matched by index to heroChips. Chips sit around the devices
@@ -39,7 +39,7 @@ export function HeroVisual({ ready, ringRotate }: HeroVisualProps) {
           animate={ready ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.3, ease: EASE_OUT }}>
           
-          <CaptainSymbol size="100%" strokeWidth={1.4} showAccent={false} />
+          <CtrotechSymbol size="100%" strokeWidth={1.4} showAccent={false} />
         </motion.div>
       </div>
 
@@ -59,7 +59,7 @@ export function HeroVisual({ ready, ringRotate }: HeroVisualProps) {
         )}
       </svg>
 
-      {/* Laptop displaying the Captain.com landing page */}
+      {/* Laptop displaying the Ctrotech.com landing page */}
       <motion.div
         className="absolute left-[4%] top-[13%] w-[80%]"
         initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
@@ -69,8 +69,13 @@ export function HeroVisual({ ready, ringRotate }: HeroVisualProps) {
         <div className="rounded-t-[14px] border-[5px] border-b-0 border-ink bg-ink shadow-[0_40px_80px_-40px_rgba(11,21,17,0.4)] sm:border-[6px]">
           <div className="relative aspect-[16/10] overflow-hidden rounded-[7px] bg-white">
             <img
-              src={LAPTOP_SCREEN_IMAGE}
-              alt="The Captain.com website shown on a laptop"
+              src={images.hero.src}
+              srcSet={images.hero.srcSet}
+              sizes="(min-width: 1024px) 40vw, 80vw"
+              width={images.hero.width}
+              height={images.hero.height}
+              fetchPriority="high"
+              alt={images.hero.alt}
               loading="eager"
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover" />

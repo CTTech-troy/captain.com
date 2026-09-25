@@ -112,6 +112,9 @@ export interface CaseStudy {
   results: string;
   image: string;
   imageAlt: string;
+  imageSrcSet: string;
+  imageWidth: number;
+  imageHeight: number;
   architecture: string[];
   serviceSlugs: string[];
 }
@@ -133,6 +136,7 @@ export interface Principle {
 }
 
 export interface TechCategory {
+  icon: IconKey;
   id: string;
   name: string;
   description: string;

@@ -59,7 +59,7 @@ export function CapabilitiesSection() {
         </div>
 
         <motion.ul layout className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <AnimatePresence>
+          <AnimatePresence initial={false}>
             {visible.map((capability, i) =>
             <ServiceCard key={capability.id} capability={capability} index={i} />
             )}

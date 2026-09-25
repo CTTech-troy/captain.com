@@ -8,7 +8,6 @@ import { ServiceIcon } from '../components/ui/ServiceIcon';
 import { ProjectCTA } from '../components/shared/ProjectCTA';
 import { pillars } from '../data/capabilities';
 import { servicePages } from '../data/servicePages';
-import { breadcrumbJsonLd } from '../utils/seo';
 
 const CRUMBS = [
 { name: 'Home', path: '/' },
@@ -18,11 +17,7 @@ const CRUMBS = [
 export function ServicesIndex() {
   return (
     <>
-      <Seo
-        title="Software, AI, Cybersecurity & Cloud Services"
-        description="Explore Captain.com services: software, web and mobile development, AI automation, cybersecurity, cloud infrastructure, business operating systems, APIs, modernization, SEO and creative."
-        path="/services"
-        jsonLd={[breadcrumbJsonLd(CRUMBS)]} />
+      <Seo path="/services" />
       
 
       <section className="bg-white pb-16 pt-28 md:pb-20 md:pt-36">

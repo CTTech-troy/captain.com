@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
 import { SectionHeading } from '../ui/SectionHeading';
 import { ServiceIcon } from '../ui/ServiceIcon';
 import { principles } from '../../data/process';
@@ -98,7 +98,7 @@ export function ApproachSection() {
         <div className="lg:col-span-5">
           <SectionHeading
             id="approach-title"
-            label="The Captain approach"
+            label="The Ctrotech approach"
             title="Technology built for real impact."
             highlight={['impact.']}
             support="We combine software engineering, artificial intelligence, cybersecurity and digital infrastructure to solve complex business problems." />
@@ -157,7 +157,7 @@ export function ApproachSection() {
             </svg>
 
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <CaptainSymbol size={64} className="text-forest-800" />
+              <CtrotechSymbol size={64} className="text-forest-800" />
               <AnimatePresence mode="wait" initial={false}>
                 <motion.p
                   key={principle.id}

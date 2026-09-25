@@ -1,11 +1,11 @@
 import type { FooterColumn, LegalDocument, LinkItem, NavLink } from '../types/content';
 
 export const brand = {
-  name: 'Captain.com',
+  name: 'Ctrotech.com',
   primaryMessage: 'We build the software businesses depend on.',
   secondaryMessage: 'Software. Security. Intelligence.',
   heroCopy:
-  'Captain.com designs, builds, secures and operates software systems for companies that need technology to perform, scale and stay ahead.'
+  'Ctrotech.com designs, builds, secures and operates software systems for companies that need technology to perform, scale and stay ahead.'
 };
 
 export const navLinks: NavLink[] = [
@@ -64,28 +64,23 @@ export const footerColumns: FooterColumn[] = [
 }];
 
 
-/** Placeholder profile URLs — replace with the official Captain.com profiles. */
-export const socialLinks: LinkItem[] = [
-{ label: 'LinkedIn', to: 'https://www.linkedin.com/', external: true },
-{ label: 'X', to: 'https://x.com/', external: true },
-{ label: 'Instagram', to: 'https://www.instagram.com/', external: true },
-{ label: 'YouTube', to: 'https://www.youtube.com/', external: true },
-{ label: 'GitHub', to: 'https://github.com/', external: true }];
+/** Add only verified company profile URLs. */
+export const socialLinks: LinkItem[] = [];
 
 
 export const legalDocuments: LegalDocument[] = [
 {
   slug: 'privacy',
   title: 'Privacy Policy',
-  summary: 'How Captain.com collects, uses and protects personal information submitted through this website.'
+  summary: 'How Ctrotech.com collects, uses and protects personal information submitted through this website.'
 },
 {
   slug: 'terms',
   title: 'Terms of Use',
-  summary: 'The terms that govern the use of the Captain.com website and its content.'
+  summary: 'The terms that govern the use of the Ctrotech.com website and its content.'
 },
 {
   slug: 'security',
   title: 'Security',
-  summary: 'How Captain.com approaches the security of its website, and how to report a vulnerability responsibly.'
+  summary: 'How Ctrotech.com approaches the security of its website, and how to report a vulnerability responsibly.'
 }];

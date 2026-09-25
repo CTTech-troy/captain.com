@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useTransform } from 'framer-motion';
-import { CaptainSymbol } from '../brand/CaptainSymbol';
+import { CtrotechSymbol } from '../brand/CtrotechSymbol';
 import { ButtonLink } from '../ui/ButtonLink';
 import { MaskText } from '../ui/MaskText';
 import { useSceneProgress } from '../../hooks/useSceneProgress';
@@ -24,12 +24,12 @@ export function ProjectCTA({
     <section ref={ref} aria-labelledby="cta-title" className="bg-white px-3 pb-3 sm:px-4 sm:pb-4">
       <motion.div style={{ clipPath }} className="relative overflow-hidden rounded-[28px] bg-forest-800 text-white">
         <motion.div style={{ rotate: symbolRotate }} className="pointer-events-none absolute -right-28 -top-28 text-forest-700" aria-hidden="true">
-          <CaptainSymbol size={520} strokeWidth={4} accentClassName="fill-lemon/80" />
+          <CtrotechSymbol size={520} strokeWidth={4} accentClassName="fill-lemon/80" />
         </motion.div>
         <div className="container-page relative grid gap-12 py-24 md:py-36 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <p className="label-mono flex items-center gap-2 text-lemon">
-              <CaptainSymbol size={14} className="text-white" />
+              <CtrotechSymbol size={14} className="text-white" />
               Start a project
             </p>
             <MaskText

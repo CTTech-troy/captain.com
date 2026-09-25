@@ -6,12 +6,11 @@ import { Seo } from '../components/layout/Seo';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { MaskText } from '../components/ui/MaskText';
 import { ProjectCTA } from '../components/shared/ProjectCTA';
-import { CaptainSymbol } from '../components/brand/CaptainSymbol';
+import { CtrotechSymbol } from '../components/brand/CtrotechSymbol';
 import { aboutChapters } from '../data/about';
 import { teamMembers } from '../data/team';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { useSceneProgress } from '../hooks/useSceneProgress';
-import { breadcrumbJsonLd, organizationJsonLd } from '../utils/seo';
 import { fadeUp } from '../utils/motion';
 import { cn } from '../utils/cn';
 
@@ -19,7 +18,7 @@ const CRUMBS = [
 { name: 'Home', path: '/' },
 { name: 'About', path: '/about' }];
 
-const IMAGE = "/d74a7a7b-9317-4843-9dd3-a4b64fd0884f.jpg";
+import images from '../generated/images.json';
 
 export function About() {
   const imageRef = useRef<HTMLDivElement>(null);
@@ -31,11 +30,7 @@ export function About() {
 
   return (
     <>
-      <Seo
-        title="About Captain.com"
-        description="Captain.com is an international software engineering and technology company that designs, builds, secures, automates and operates software systems."
-        path="/about"
-        jsonLd={[organizationJsonLd(), breadcrumbJsonLd(CRUMBS)]} />
+      <Seo path="/about" />
       
 
       <section className="bg-white pb-16 pt-28 md:pt-36">
@@ -44,8 +39,8 @@ export function About() {
           <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <p className="label-mono flex items-center gap-2 text-forest-700">
-                <CaptainSymbol size={14} className="text-forest-700" />
-                About Captain.com
+                <CtrotechSymbol size={14} className="text-forest-700" />
+                About Ctrotech.com
               </p>
               <MaskText
                 as="h1"
@@ -64,13 +59,16 @@ export function About() {
         <div ref={imageRef} className="container-page mt-16">
           <motion.figure style={{ clipPath }} className="relative overflow-hidden rounded-[28px] bg-mist">
             <motion.img
-              src={IMAGE}
-              alt="Engineers collaborating around a table in a bright studio — illustrative image"
+              src={images.about.src}
+              srcSet={images.about.srcSet}
+              sizes="(min-width: 1440px) 1344px, 94vw"
+              fetchPriority="high"
+              alt={images.about.alt}
               style={{ scale: imageScale }}
-              loading="lazy"
+              loading="eager"
               decoding="async"
-              width={1500}
-              height={1000}
+              width={images.about.width}
+              height={images.about.height}
               className="aspect-[16/9] w-full object-cover md:aspect-[21/9]" />
             
             <figcaption className="label-mono absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1.5 text-muted">Illustrative image</figcaption>
@@ -78,7 +76,7 @@ export function About() {
         </div>
       </section>
 
-      <section className="bg-white pb-28 md:pb-36" aria-label="The Captain.com story">
+      <section className="bg-white pb-28 md:pb-36" aria-label="The Ctrotech.com story">
         <div className="container-page grid gap-12 lg:grid-cols-12">
           <nav aria-label="About chapters" className="hidden self-start lg:sticky lg:top-28 lg:col-span-3 lg:block">
             <ol className="border-l border-line">
@@ -151,7 +149,7 @@ export function About() {
               <ul className="mt-8 grid gap-6 sm:grid-cols-2">
                   {teamMembers.map((member) =>
                 <li key={member.id}>
-                      <img src={member.image} alt={member.name} loading="lazy" className="aspect-[4/5] w-full rounded-2xl object-cover" />
+                      <img src={member.image} alt={member.name} loading="lazy" width={800} height={1000} className="aspect-[4/5] w-full rounded-2xl object-cover" />
                       <p className="mt-4 font-display text-lg font-semibold text-ink">{member.name}</p>
                       <p className="text-[14px] text-muted">{member.role}</p>
                     </li>

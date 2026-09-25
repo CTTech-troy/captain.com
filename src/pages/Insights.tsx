@@ -3,9 +3,8 @@ import { Seo } from '../components/layout/Seo';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { MaskText } from '../components/ui/MaskText';
 import { ButtonLink } from '../components/ui/ButtonLink';
-import { CaptainSymbol } from '../components/brand/CaptainSymbol';
+import { CtrotechSymbol } from '../components/brand/CtrotechSymbol';
 import { articles, insightCategories } from '../data/insights';
-import { breadcrumbJsonLd } from '../utils/seo';
 
 const CRUMBS = [
 { name: 'Home', path: '/' },
@@ -15,11 +14,7 @@ const CRUMBS = [
 export function Insights() {
   return (
     <>
-      <Seo
-        title="Insights"
-        description="Engineering, AI, cybersecurity and infrastructure insights from the Captain.com team."
-        path="/insights"
-        jsonLd={[breadcrumbJsonLd(CRUMBS)]} />
+      <Seo path="/insights" />
       
       <section className="min-h-[80vh] bg-white pb-28 pt-28 md:pt-36">
         <div className="container-page">
@@ -39,7 +34,7 @@ export function Insights() {
           {articles.length === 0 ?
           <div className="mt-16 grid gap-10 rounded-3xl bg-soft p-8 md:p-12 lg:grid-cols-12">
               <div className="lg:col-span-5">
-                <CaptainSymbol size={48} className="text-forest-800" />
+                <CtrotechSymbol size={48} className="text-forest-800" />
                 <h2 className="mt-6 font-display text-[28px] font-semibold tracking-[-0.02em] text-ink">The first articles are being written.</h2>
                 <p className="mt-3 text-[16px] leading-relaxed text-muted">
                   We will publish only when we have something genuinely useful to say. In the meantime, tell us what you are working on.

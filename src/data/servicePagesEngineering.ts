@@ -8,7 +8,7 @@ export const engineeringServicePages: ServicePage[] = [
   title: 'Software Development',
   metaTitle: 'Custom Software Development Company',
   metaDescription:
-  'Captain.com engineers custom web platforms, enterprise applications, SaaS products and backend systems built around how your business operates.',
+  'Ctrotech.com engineers custom web platforms, enterprise applications, SaaS products and backend systems built around how your business operates.',
   heroTitle: 'Custom software, engineered around how you operate.',
   heroCopy:
   'We design and build web platforms, enterprise applications and backend systems that fit your business — instead of forcing your business to fit the software.',
@@ -45,7 +45,7 @@ export const engineeringServicePages: ServicePage[] = [
   title: 'Web Development',
   metaTitle: 'Website Design & Web Application Development',
   metaDescription:
-  'Fast, accessible, search-ready websites and web applications designed and engineered by Captain.com for international businesses.',
+  'Fast, accessible, search-ready websites and web applications designed and engineered by Ctrotech.com for international businesses.',
   heroTitle: 'Websites and web applications built to perform.',
   heroCopy:
   'From company websites to complex web applications, we design and engineer fast, accessible and search-ready experiences for the web.',
@@ -82,7 +82,7 @@ export const engineeringServicePages: ServicePage[] = [
   title: 'Mobile Development',
   metaTitle: 'iOS & Android App Development Company',
   metaDescription:
-  'Native iOS and Android apps and cross-platform products, with the secure APIs, payments and analytics behind them — engineered by Captain.com.',
+  'Native iOS and Android apps and cross-platform products, with the secure APIs, payments and analytics behind them — engineered by Ctrotech.com.',
   heroTitle: 'Mobile apps people rely on every day.',
   heroCopy:
   'Native iOS and Android apps and cross-platform products — with the APIs, authentication, payments and analytics that make them dependable.',
@@ -119,7 +119,7 @@ export const engineeringServicePages: ServicePage[] = [
   title: 'Desktop Development',
   metaTitle: 'Desktop Application Development — Windows, macOS, Linux',
   metaDescription:
-  'Captain.com builds Windows, macOS and Linux desktop applications with offline-first data, hardware integration and secure cloud sync.',
+  'Ctrotech.com builds Windows, macOS and Linux desktop applications with offline-first data, hardware integration and secure cloud sync.',
   heroTitle: 'Desktop software for serious work.',
   heroCopy:
   'Windows, macOS and Linux applications for teams that need performance, offline capability and deep integration with local hardware and files.',
@@ -156,7 +156,7 @@ export const engineeringServicePages: ServicePage[] = [
   title: 'Embedded Systems',
   metaTitle: 'Embedded Systems, Firmware & IoT Development',
   metaDescription:
-  'Firmware, IoT platforms and hardware integrations engineered by Captain.com for real-time reliability and device security.',
+  'Firmware, IoT platforms and hardware integrations engineered by Ctrotech.com for real-time reliability and device security.',
   heroTitle: 'Firmware and connected devices, engineered for the real world.',
   heroCopy:
   'Embedded software, IoT platforms and hardware integrations that operate reliably in real time — and securely at scale.',
@@ -193,7 +193,7 @@ export const engineeringServicePages: ServicePage[] = [
   title: 'API Development',
   metaTitle: 'API Development & Integration Services',
   metaDescription:
-  'Payment, banking, logistics, identity, messaging, accounting and AI integrations — plus the APIs your products expose — built by Captain.com.',
+  'Payment, banking, logistics, identity, messaging, accounting and AI integrations — plus the APIs your products expose — built by Ctrotech.com.',
   heroTitle: 'APIs and integrations that hold systems together.',
   heroCopy:
   'Payment, banking, logistics, identity, messaging, accounting and AI integrations — and the APIs your own products expose to the world.',
